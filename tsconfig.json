@@ -1,0 +1,54 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@public/*": ["./public/*"],
+      "@components/*": ["./src/components/*"],
+      "@styles/*": ["./styles/*"],
+      "@config/*": ["./src/config/*"],
+      "@helpers/*": ["./helpers/*"],
+      "@redux/*": ["./redux/*"],
+      "@api/*": ["./src/api/*"],
+      "@/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "next.env.js",
+    ".next/types/**/*.ts",
+    "src/app/api/auth/[...nextauth]/route.js",
+    "src/app/layout.jsx",
+    "src/app/page.jsx",
+    "src/app/login/page.jsx",
+    "src/until/helper.js",
+    "src/lib/api.js",
+    "src/lib/vector-store.js",
+    "src/app/api/chat/route.js",
+    "src/components/chat.jsx",
+    "_next/types/**/*.ts",
+    "src/app/api/auth/logout/logout.js",
+    "src/app/api/salePoint/route.ts"
+  ],
+  "exclude": ["node_modules", ".next"]
+}

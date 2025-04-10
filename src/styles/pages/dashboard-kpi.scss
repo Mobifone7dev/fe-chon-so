@@ -1,0 +1,142 @@
+.dashboard-kpi {
+  margin-bottom: 20px;
+  .table-kpi {
+    position: relative;
+    table {
+      .table-head {
+        @media (min-width:1140px) {
+            &.is-sticky {
+                position: fixed;
+                top: 0;
+                
+              }
+        }
+       
+        th {
+          border: thin solid;
+          border-width: 1px;
+          border-color: #a1988c;
+          background-color: #ffc000;
+          padding-left: 5px;
+        }
+        th:nth-child(1) {
+          width: 36px;
+        }
+        th:nth-child(2) {
+          width: 305px;
+        }
+        th:nth-child(3) {
+          width: 100px;
+          font-style: italic;
+        }
+        th:nth-child(4) {
+          width: 100px;
+        }
+        th:nth-child(5),
+        th:nth-child(6),
+        th:nth-child(7),
+        th:nth-child(8),
+        th:nth-child(9),
+        th:nth-child(10) {
+          width: 80px;
+        }
+        th:nth-child(11) {
+          width: 80px;
+        }
+        th:nth-child(12) {
+          width: 123px;
+        }
+      }
+      tbody {
+        &.is-sticky {
+           @media (min-width:1140px) {
+            .kpi-dvt{
+                width: 100px;
+              }
+              .kpi-kht, .kpi-thlk, kpi-percent-lk, kpi-percent-th{
+                  width: 100px;
+              }
+              .cell-number{
+                width: 80px;
+                text-align: right; // Căn phải nội dung các ô số
+              }
+              .cell-donviphutrach {
+                text-align: center; // Căn giữa nội dung
+                width: 124px;
+                    
+              }
+              .cell-kpi {
+                  width: 305px !important;
+              }
+           }
+           
+          }
+        tr {
+          td {
+            border: thin solid;
+            border-width: 1px;
+            border-color: #a1988c;
+            padding-left: 5px;
+          }
+          td.cell-number {
+            text-align: right;
+          }
+          td.cell-donviphutrach {
+            text-align: center;
+          }
+         
+        }
+      }
+    }
+    .text-bold {
+      font-weight: 600;
+    }
+    .text-sub1 {
+      background-color: #fbe2d5;
+      font-weight: 600;
+    }
+    .text-sub2 {
+      font-weight: 500;
+    }
+    .bg-blue-secondary {
+      background-color: #d5f0f8;
+    }
+    .bg-green-secondary {
+      background-color: #b5e6a2 !important;
+    }
+    .text-sub3 {
+      font-weight: 400;
+    }
+    .text-sub4 {
+      font-style: italic;
+    }
+    .bg-red {
+      background-color: #ff9999;
+      text-align: right;
+    }
+    .bg-green {
+      background-color: #99e699;
+      text-align: right;
+    }
+  }
+#exec-kpi-nds,
+#exec-kpi-hts,
+#exec-kpi-thoai,
+#exec-kpi-m2m,
+#exec-kpi-saymee {
+  &:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: rgba(0, 123, 255, 0.1);
+    cursor: pointer;
+  }
+}
+.kpi-cell {
+  &:hover {
+    color: #007bff;
+    text-decoration: underline;
+    background-color: rgba(0, 123, 255, 0.1);
+    cursor: pointer;
+  }
+}
+}

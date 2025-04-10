@@ -1,0 +1,88 @@
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  transform: $transforms;
+}
+
+// Rotate
+@mixin rotate($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// Scale
+@mixin scale($scale) {
+  @include transform(scale($scale));
+}
+
+// Translate
+@mixin translate($x, $y) {
+  @include transform(translate($x, $y));
+}
+
+// TranslateX
+@mixin translateX($x) {
+  @include transform(translateX($x));
+}
+
+// TranslateY
+@mixin translateY($y) {
+  @include transform(translateY($y));
+}
+
+@mixin input-placeholder {
+  &::placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+  &:-webkit-input-placeholder {
+    @content;
+  }
+}
+
+@mixin filter($value) {
+  -webkit-filter: $value;
+  -moz-filter: $value;
+  -o-filter: $value;
+  filter: $value;
+}
+
+@mixin line-overflow($font-size, $line-height, $line) {
+  font-size: $font-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-height: $line-height; /* fallback */
+  max-height: $line-height * $line; /* fallback */
+  -webkit-line-clamp: $line; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+@mixin w-100vw() {
+  min-width: 100%;
+  width: 100vw;
+}
+
+@mixin h-100vh() {
+  height: 100%;
+  min-height: 100vh;
+}
+
+@mixin text-default {
+  font-size: $font-size-medium;
+  color: $white;
+  letter-spacing: 0.32px;
+}

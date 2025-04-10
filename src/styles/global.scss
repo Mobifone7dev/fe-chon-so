@@ -1,0 +1,310 @@
+@import "~bootstrap/scss/bootstrap";
+
+@import "variables";
+@import "fonts";
+@import "mbf-icon";
+@import "mixin";
+@import "./pages/app.scss";
+@import "./components/button.scss";
+@import "../components/header/header-app.scss";
+@import "../components/MobileMenu/mobile-menu.scss";
+@import "../components/footer/footer.scss";
+@import "../components/login/login-form.scss";
+@import "../components/search/search-header.scss";
+@import "./pages/home-page.scss";
+@import "./pages/blog-category.scss";
+@import "./pages/blog-detail.scss";
+@import "./pages/question.scss";
+@import "./pages/login-test.scss";
+@import "./pages/check_isdn.scss";
+@import "./pages/recruitment.scss";
+@import "./pages/chat.scss";
+@import "./pages/dashboard-kpi.scss";
+@import "./pages/admin-page.scss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: hsl(212.7, 26.8%, 83.9);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Roboto";
+}
+img {
+  display: block;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  .content-page {
+    padding: 0 16px;
+    margin-top: 70px;
+    @media (max-width: 960px) {
+      margin-top: 100px;
+    }
+  }
+}
+.navigation-header {
+  display: flex;
+  list-style-type: none;
+  li + li {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+}
+.btn-toggleMenu {
+  background: none;
+  border: 0;
+  width: 24px;
+  height: 15px;
+  outline: none;
+  position: relative;
+  padding: 0;
+  padding-top: 1px;
+  padding-left: 2px;
+  // @media (max-width: 960px) {
+  //   display: block;
+  //   order: 1;
+  // }
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    margin-bottom: 6px;
+    transition: all 0.3s;
+    position: relative;
+    &:nth-child(1) {
+      transform-origin: top left;
+    }
+    &:nth-child(3) {
+      transform-origin: bottom left;
+    }
+  }
+  &.isOpen {
+    span {
+      &:nth-child(1) {
+        transform: rotate(41deg);
+      }
+      &:nth-child(3) {
+        transform: rotate(-41deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+    }
+  }
+}
+.btn-toggleMenu .menu-mobile .btn-toggleMenu span,
+.is-sticky .btn-toggleMenu span {
+  background: #000;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.close-modal {
+  width: 24px;
+  height: 24px;
+  border: 0;
+  background: none;
+  outline: 0;
+  position: relative;
+  span {
+    position: absolute;
+    width: 24px;
+    height: 2px;
+    background: $neutral-grey-800;
+    top: 3px;
+    transition: all 0.3s;
+    &:nth-child(1) {
+      left: 4px;
+      transform: rotate(45deg);
+      transform-origin: left top;
+    }
+    &:nth-child(2) {
+      left: -4px;
+      transform: rotate(-45deg);
+      transform-origin: right top;
+    }
+  }
+  &:hover {
+    span {
+      background: $primary-base;
+    }
+  }
+}
+
+.hide-desktop {
+  display: none;
+  @media (max-width: 480px) {
+    display: block;
+  }
+}
+.hide-mobile {
+  display: block;
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+.row {
+  @media (max-width: 480px) {
+    margin: 0 -16px;
+  }
+  & > * {
+    @media (max-width: 480px) {
+      padding: 0 16px;
+    }
+  }
+}
+.container {
+  @media (max-width: 480px) {
+    padding: 0 16px;
+  }
+}
+
+.container,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl,
+.container-xxl {
+  @media (min-width: 1400px) {
+    max-width: 1140px;
+  }
+}
+
+@keyframes animateLoading {
+  0% {
+    background: #eee;
+  }
+  50% {
+    background: #bdbdbd;
+  }
+  100% {
+    background: #eee;
+  }
+}
+
+.api-loading {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  animation: animateLoading 2s infinite;
+}
+.align--justify {
+  text-align: justify;
+}
+.line {
+  width: 100%;
+  height: 0px;
+  border-bottom: 1px solid rgb(185, 181, 181);
+}
+.input-kpi {
+  min-width: 100px !important;
+}
+

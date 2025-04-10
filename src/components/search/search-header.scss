@@ -1,0 +1,94 @@
+.search-header {
+  display: flex;
+  width: 400px;
+  height: 40px;
+  border-radius: 8px;
+  margin-bottom: $spacing-s;
+  margin-top: $spacing-s;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+
+  .search-text {
+    width: calc(100% - 116px);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    border: 1px solid $neutral-grey-400;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+
+    z-index: 22;
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+    button,
+    button:focus {
+      outline: none;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+    input {
+      width: calc(100% - 110px);
+      border: 0;
+      outline: none;
+      background: none;
+      &:focus {
+        & + .suggest-search-result {
+          display: block;
+        }
+      }
+    }
+    > i {
+      margin-left: 18px;
+      margin-right: 12px;
+    }
+    .suggest-search-result {
+      display: none;
+      width: 100%;
+      position: absolute;
+      top: 45px;
+      background: #fff;
+      box-shadow: 0px 5px 1px rgb(44 44 44 / 5%),
+        0px 9px 8px rgb(44 44 44 / 10%);
+      border-radius: 0 0 8px 8px;
+      padding: 10px 0;
+      padding-top: 20px;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        width: calc(100% - 40px);
+        height: 1px;
+        background: $neutral-grey-200;
+      }
+      .label-suggest {
+        font-size: $body;
+        line-height: $lh-body;
+        margin-bottom: 10px;
+        color: $neutral-grey-500;
+        padding: 0 20px;
+        padding-top: 10px;
+        font-weight: 400;
+      }
+      &:hover {
+        display: block;
+      }
+    }
+  }
+  .search-submit {
+    width: 116px;
+    border: 0;
+    background: $primary;
+    color: #fff;
+    height: 100%;
+    border-radius: 0 8px 8px 0;
+    font-size: $body;
+    font-weight: 600;
+    @media (max-width: 480px) {
+      // display: none;
+    }
+  }
+}

@@ -1,0 +1,130 @@
+.category-page {
+  padding-top: $spacing-xxl-5;
+  @media (max-width: 480px) {
+    padding-top: $spacing-xxl-4;
+  }
+}
+
+.intro-category {
+  width: 100%;
+  h2 {
+    font-size: $title-2;
+    line-height: $lh-title-2;
+    color: $neutral-grey-800;
+    margin-bottom: $spacing-s;
+    font-weight: 700;
+    @media (max-width: 480px) {
+      font-size: $title-3;
+      line-height: $lh-title-3;
+    }
+  }
+  p {
+    font-size: $body;
+    line-height: $lh-body;
+    color: $neutral-grey-500;
+    margin-bottom: $spacing-xxl-2;
+  }
+}
+
+.blog-category-container {
+  position: relative;
+  width: 100%;
+  .well-read {
+    width: 25%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding-left: 24px;
+    @media (max-width: 960px) {
+      width: 100%;
+      position: static;
+      padding-left: 0;
+      padding-top: $spacing-xxl-4;
+    }
+  }
+}
+
+.new-blog-item.top-category {
+  margin-bottom: $spacing-xxl-5;
+  @media (max-width: 480px) {
+    margin-bottom: $spacing-xxl-4;
+  }
+  .thumb {
+    img {
+      height: 457px;
+      @media (max-width: 480px) {
+        height: 211px;
+        width: calc(100% + 32px);
+        margin-left: -16px;
+        border-radius: 0;
+      }
+    }
+  }
+  h3 {
+    @include line-overflow($title-3, $lh-title-3, 2);
+    margin-bottom: $spacing-xs;
+    font-weight: 700;
+    @media (max-width: 480px) {
+      @include line-overflow($headline-1, $lh-headline-1, 2);
+    }
+  }
+}
+
+.category-loading {
+  width: 100%;
+  height: 1150px;
+  position: relative;
+  > div {
+    position: relative;
+  }
+  .load1 {
+    width: 100%;
+    max-width: 200px;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+  .load2 {
+    width: 100%;
+    max-width: 800px;
+    height: 24px;
+    margin-bottom: 32px;
+  }
+  .flex-load {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    @media (max-width: 480px) {
+      display: block;
+    }
+    > div {
+      position: relative;
+    }
+    .load4 {
+      width: calc(75% - 24px);
+      height: 550px;
+      @media (max-width: 480px) {
+        width: 100%;
+        height: 400px;
+      }
+    }
+    .load5 {
+      width: calc(25% - 24px);
+      height: 550px;
+      @media (max-width: 480px) {
+        display: none;
+      }
+    }
+    .load6,
+    .load7,
+    .load8,
+    .load9 {
+      width: calc(25% - 12px);
+      height: 290px;
+      @media (max-width: 480px) {
+        height: 100px;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

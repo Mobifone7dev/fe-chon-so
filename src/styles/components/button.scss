@@ -1,0 +1,74 @@
+.btn-houze {
+  display: inline-block;
+  text-decoration: none;
+  outline: none;
+  padding: 13px $spacing-xxl;
+  border-radius: 8px;
+  font-size: $body;
+  line-height: $lh-body;
+  transition: all 0.3s;
+  font-weight: 600;
+  &.btn-md {
+    padding: 9.5px $spacing-xxl;
+    font-size: $subhead;
+    line-height: $lh-subhead;
+  }
+  &.btn-sm {
+    padding: 7px $spacing-xxl;
+    font-size: $caption-1;
+    line-height: $lh-caption-1;
+  }
+  & + & {
+    margin-left: 10px;
+  }
+}
+.btn {
+  &-solid {
+    border: 1px solid $primary-base;
+    background-color: $primary-base;
+    color: #fff;
+    &:hover {
+      border-color: $p-dark;
+      background-color: $p-dark;
+      color: #fff;
+    }
+    &.disable {
+      border-color: $neutral-grey-200;
+      background: $neutral-grey-200;
+      color: $neutral-grey-400;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+  &-outline {
+    border: 1px solid $primary-base;
+    background-color: #fff;
+    color: $primary-base;
+    &:hover {
+      border-color: $p-dark;
+      color: $p-dark;
+    }
+    &.disable {
+      border-color: $neutral-grey-200;
+      color: $neutral-grey-400;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+  }
+  &-ghost {
+    border: 1px solid #fff;
+    background-color: #fff;
+    color: $primary-base;
+    &.disable {
+      color: $neutral-grey-300;
+      &:hover {
+        cursor: not-allowed;
+      }
+    }
+    &:hover {
+      color: $p-dark;
+    }
+  }
+}
