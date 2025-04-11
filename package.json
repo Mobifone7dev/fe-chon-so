@@ -3,12 +3,12 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8107",
+    "dev": "next dev -p 8112",
     "build": "next build",
-    "start": "next start -p 8107",
+    "start": "next start -p 8112",
     "lint": "next lint"
   },
-  "proxy": "http://localhost:8104",
+  "proxy": "http://localhost:8106",
   "dependencies": {
     "@ai-sdk/openai": "^0.0.68",
     "@ionic/react": "^8.3.3",
