@@ -14,16 +14,16 @@ const Page = () => {
   const [loginTitle, setLoginTitle] = useState(
     "Chào mừng bạn đến với MobiFone"
   );
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState("");
   const [error, setError] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
+  const [erroruser, setErroruser] = useState("");
   const [submit, setSubmit] = useState("");
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [verified, setVerified] = useState(false);
   let captcha;
 
-  function checkIfEmailInString(text) {
+  function checkIfuserInString(text) {
     var re =
       /(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/;
     return re.test(text);
@@ -43,10 +43,7 @@ const Page = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let newStringEmail = email;
-    if (!checkIfEmailInString(email)) {
-      newStringEmail = email + "@mobifone.vn";
-    }
+   
     if (!verified) {
       setError("Invalid captcha or resubmit captcha");
       return;
@@ -61,7 +58,7 @@ const Page = () => {
           // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
-          username: newStringEmail,
+          username: user,
           password,
         }), // body data type must match "Content-Type" header
       });
@@ -75,7 +72,6 @@ const Page = () => {
          localStorage.setItem("user", JSON.stringify(user));
 
         await signIn("credentials", {
-          email: newStringEmail,
           password,
           user: user,
           accessToken: user.accessToken,
@@ -87,6 +83,7 @@ const Page = () => {
       router.replace("/");
       router.refresh();
     } catch (error) {
+      console.log("error", error)
       setError("Invalid credentials");
       setLoading(false);
       resetCaptcha();
@@ -132,20 +129,20 @@ const Page = () => {
               <div className="login-title">
                 <h2 className="loginTitle-text">Login</h2>
                 <div className="caption mt-2">
-                  <p>Sử dụng email MobiFone để login vào hệ thống</p>
+                  <p>Sử dụng user MobiFone để login vào hệ thống</p>
                 </div>{" "}
               </div>
-              <div className="page email-page">
+              <div className="page user-page">
                 <div className="input-box">
                   <input
                     type="text"
-                    className="email"
-                    value={email}
+                    className="user"
+                    value={user}
                     autoFocus
                     required
-                    placeholder="Enter Your Email"
+                    placeholder="Enter Your user"
                     onChange={(e) => {
-                      setEmail(e.target.value);
+                      setUser(e.target.value);
                     }}
                     onKeyDown={(e) => {
                       if (e.key === "Tab") e.preventDefault();
@@ -164,9 +161,9 @@ const Page = () => {
                   />
                   <label htmlFor="password">Enter your password</label>
                 </div>
-                {errorEmail && (
+                {erroruser && (
                   <div className="bg-red-500 text-white w-fit text-sm py-1 px-3 rounded-md mt-4">
-                    {errorEmail}
+                    {erroruser}
                   </div>
                 )}
                  <div style={{ marginTop: "20px" }}>
