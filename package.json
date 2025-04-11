@@ -3,9 +3,9 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 8112",
+    "dev": "next dev -p 8107",
     "build": "next build",
-    "start": "next start -p 8112",
+    "start": "next start -p 8107",
     "lint": "next lint"
   },
   "proxy": "http://localhost:8104",
