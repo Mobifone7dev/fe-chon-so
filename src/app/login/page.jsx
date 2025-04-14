@@ -62,7 +62,7 @@ const Page = () => {
           password,
         }), // body data type must match "Content-Type" header
       });
-      if (!result) {
+      if (!result || result.status == 401) {
         setError("Invalid credentials");
         setLoading(false);
         return;
