@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.scss";
 const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation"; // Dùng useRouter từ next/navigation
 
 interface NumberRecord {
@@ -27,12 +26,15 @@ const NumberTable: React.FC = () => {
   const limit = 100; // Số dòng trên mỗi trang (cập nhật thành 100)
   const router = useRouter(); // Dùng useRouter từ next/navigation
   const [showTooltip, setShowTooltip] = useState(false); // State điều khiển tooltip
-  const { data: session } = useSession(); // Lấy thông tin session người dùng
   const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
+  const [ip, setIp] = useState('');
 
-  // In ra session để kiểm tra thông tin
-  console.log("Session trả về:", session); // In ra session để kiểm tra
-
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip))
+      .catch((err) => console.error('Failed to fetch IP:', err));
+  }, []);
   // Fetch dữ liệu từ API
   const fetchData = async (term: string) => {
     setLoading(true);
@@ -106,38 +108,27 @@ const NumberTable: React.FC = () => {
   };
 
   const handleChooseTelNumber = async (telNumber: string) => {
-    try {
-      const email = session?.user?.email; // lấy từ useSession
+    // try {
 
-      console.log("Email từ session:", email); // 🧪 In ra email để kiểm tra
+    //   const res = await fetch(`${API_URL_TABLE}/chonso/insertChonSo`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       isdn: telNumber,
+    //     }),
+    //   });
 
-      if (!email) {
-        console.warn("Thiếu thông tin email");
-        return;
-      }
-
-      const res = await fetch(`${API_URL_TABLE}/chonso/insertChonSo`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: email,
-          isdn: telNumber,
-        }),
-      });
-
-      const data = await res.json();
-      if (data.result === 1) {
-        alert("✅ Chọn số thành công");
-        setSelectedNumbers((prev) => [...prev, telNumber]);
-      } else if (data.result === 2) {
-        alert("⚠️ Email không thuộc Shop Code nào");
-      } else {
-        alert("❌ Có lỗi xảy ra khi chọn số");
-      }
-    } catch (err) {
-      console.error("Lỗi khi gọi API chọn số:", err);
-      alert("❌ Lỗi hệ thống");
-    }
+    //   const data = await res.json();
+    //   if (data.result === 1) {
+    //     alert("✅ Chọn số thành công");
+    //     setSelectedNumbers((prev) => [...prev, telNumber]);
+    //   } else {
+    //     alert("❌ Có lỗi xảy ra khi chọn số");
+    //   }
+    // } catch (err) {
+    //   console.error("Lỗi khi gọi API chọn số:", err);
+    //   alert("❌ Lỗi hệ thống");
+    // }
   };
   return (
     <div className="table-container">

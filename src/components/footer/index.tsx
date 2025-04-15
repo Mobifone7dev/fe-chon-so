@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+
+import React, { FC, useEffect, useState } from "react";
 import Image from "next/image";
 import CollapseCategory from "../elements/CollapseCategory";
 import { infoLink, companyLink, serviceLink } from "@config/constants";
@@ -6,6 +7,14 @@ import Link from "next/link";
 
 const Footer: FC = () => {
   const { NEXT_PUBLIC_APP_ENV } = process.env;
+  const [ip, setIp] = useState('');
+
+  useEffect(() => {
+    fetch('https://api.ipify.org?format=json')
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip))
+      .catch((err) => console.error('Failed to fetch IP:', err));
+  }, []);
   const str =
     "MobiFone 7 đang cải thiện tính năng này để giúp bạn có một trải nghiệm sử dụng tốt hơn. Mong bạn thông cảm";
   return (
@@ -15,6 +24,7 @@ const Footer: FC = () => {
           <div className="row">
             <div className="col-md-12 col-lg-6">
               <div className="info-footer">
+                <span style={{ textAlign: "center", color: "white" }}>Ip máy của bạn là: {ip}</span>
                 <div className="logo-footer">
                   <Image
                     src="/imgs/logo-mbf.png"

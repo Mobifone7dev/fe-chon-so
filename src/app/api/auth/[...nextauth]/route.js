@@ -11,7 +11,6 @@ export const authOptions = {
       credentials: {},
       async authorize(credentials) {
         const { email, password, user, accessToken } = credentials;
-
         return { ...user, email: email }; // Đảm bảo trả về thông tin người dùng hợp lệ
 
       },
