@@ -1,0 +1,53 @@
+{
+
+    "54": {
+      "name": "Phú Yên",
+      "slug": "phu-yen",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Phú Yên",
+      "code": "54"
+    },
+
+    "62": {
+      "name": "Kon Tum",
+      "slug": "kon-tum",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Kon Tum",
+      "code": "62"
+    },
+
+    "66": {
+      "name": "Đắk Lắk",
+      "slug": "dak-lak",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Đắk Lắk",
+      "code": "66"
+    },
+  
+    "64": {
+      "name": "Gia Lai",
+      "slug": "gia-lai",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Gia Lai",
+      "code": "64"
+    },
+  
+    "67": {
+      "name": "Đắk Nông",
+      "slug": "dak-nong",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Đắk Nông",
+      "code": "67"
+    },
+
+    "56": {
+      "name": "Khánh Hòa",
+      "slug": "khanh-hoa",
+      "type": "tinh",
+      "name_with_type": "Tỉnh Khánh Hòa",
+      "code": "56"
+    }
+  
+
+  }
+  

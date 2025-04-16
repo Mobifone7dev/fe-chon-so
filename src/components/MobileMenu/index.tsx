@@ -44,7 +44,7 @@ const MobileMenu: FC<MenuProps> = ({ toggleMenu, isOpen }) => {
           <span>18001090 </span>
         </a>
       </div>
-      <div className="logout-menu-mobile">
+      {/* <div className="logout-menu-mobile">
         <button
           onClick={() => {
             signOut({ redirect: false });
@@ -55,7 +55,7 @@ const MobileMenu: FC<MenuProps> = ({ toggleMenu, isOpen }) => {
             <span>Logout </span>
           </a>
         </button>
-      </div>
+      </div> */}
 
       <div className="mbf-mb">
         {/* <b>MobiFone.vn</b> */}

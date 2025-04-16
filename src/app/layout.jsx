@@ -2,15 +2,10 @@
 import "../styles/global.scss";
 import React, { Suspense } from "react";
 import "react-modern-drawer/dist/index.css";
-import { AuthProvider } from "./Providers.js";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth";
-import { authOptions } from "./api/auth/[...nextauth]/route";
 import Layout from "../components/layout/Layout";
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
 const RootLayout = async ({ children }) => {
-  const session = await getServerSession(authOptions);
   return (
     <html lang="en" suppressHydrationWarning>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -45,9 +40,7 @@ const RootLayout = async ({ children }) => {
           integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
           crossOrigin="anonymous"
         ></script>
-        <AuthProvider>
-          {session ? <Layout>{children}</Layout> : children}
-        </AuthProvider>
+     <Layout>{children}</Layout>
       </body>
     </html>
   );

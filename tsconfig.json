@@ -49,6 +49,6 @@
     "_next/types/**/*.ts",
     "src/app/api/auth/logout/logout.js",
     "src/app/api/salePoint/route.ts"
-  ],
+, "src/components/modals/FormChooseNumber.jsx"  ],
   "exclude": ["node_modules", ".next"]
 }

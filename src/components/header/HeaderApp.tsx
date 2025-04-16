@@ -99,7 +99,7 @@ const HeaderApp: FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
             <i className="icon-call-connecting" />
             <span>18001090</span>
           </a>
-          <button
+          {/* <button
             onClick={() => {
               signOut({ redirect: false });
               router.push("/login");
@@ -107,7 +107,7 @@ const HeaderApp: FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
             className={`btn-houze btn-solid`}
           >
             <span>Logout</span>
-          </button>
+          </button> */}
         </div>
       </div>
 

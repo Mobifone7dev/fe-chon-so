@@ -4,6 +4,7 @@ import axios from "axios";
 import "./styles.scss";
 const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
 import { useRouter } from "next/navigation"; // Dùng useRouter từ next/navigation
+import FormChooseNumber from "@components/modals/FormChooseNumber";
 
 interface NumberRecord {
   TEL_NUMBER: string;
@@ -18,16 +19,16 @@ interface NumberRecord {
 const NumberTable: React.FC = () => {
   const [data, setData] = useState<NumberRecord[]>([]); // Dữ liệu số điện thoại
   const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
-  const [searchTerm, setSearchTerm] = useState<string>(""); // Từ khóa tìm kiếm
+  const [searchTerm, setSearchTerm] = useState<string>("*88*99*"); // Từ khóa tìm kiếm
   const [warning, setWarning] = useState<string>(""); // Cảnh báo nhập liệu
   const [type, setType] = useState<string>(""); // Lưu giá trị type
   const [shopCodeInput, setShopCodeInput] = useState<string>("");
   const [totalCount, setTotalCount] = useState<number>(0); // Tổng số bản ghi
   const limit = 100; // Số dòng trên mỗi trang (cập nhật thành 100)
-  const router = useRouter(); // Dùng useRouter từ next/navigation
   const [showTooltip, setShowTooltip] = useState(false); // State điều khiển tooltip
-  const [selectedNumbers, setSelectedNumbers] = useState<string[]>([]);
   const [ip, setIp] = useState('');
+  const [showPopup, setShowPopup] = useState(false); // State điều khiển popup
+  const [selectedTelNumber, setSelectedTelNumber] = useState<string | null>(""); // Số điện thoại được chọn
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -129,9 +130,12 @@ const NumberTable: React.FC = () => {
     //   console.error("Lỗi khi gọi API chọn số:", err);
     //   alert("❌ Lỗi hệ thống");
     // }
+    setSelectedTelNumber(telNumber); // Cập nhật số điện thoại được chọn
+    setShowPopup(true); // Hiện popup khi người dùng chọn số
   };
   return (
     <div className="table-container">
+      <h1>Tra Cứu Kho Số</h1>
       <div className="search-container">
         <div style={{ position: "relative" }}>
           {/* input và tooltip ở đây */}
@@ -195,7 +199,6 @@ const NumberTable: React.FC = () => {
         {warning && <p className="warning-message">{warning}</p>}{" "}
         {/* Hiển thị cảnh báo */}
       </div>
-      <h1>Tra Cứu Kho Số</h1>
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -239,6 +242,7 @@ const NumberTable: React.FC = () => {
           )}
         </>
       )}
+      <FormChooseNumber show={showPopup} handleClose={() => { setShowPopup((prev) => !prev) }} selectedTelNumber={selectedTelNumber} />
     </div>
   );
 };
