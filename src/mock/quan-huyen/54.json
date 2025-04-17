@@ -1,11 +1,11 @@
 {
   "555": {
-    "name": "Tuy Hoà",
+    "name": "Tuy Hòa",
     "type": "thanh-pho",
     "slug": "tuy-hoa",
-    "name_with_type": "Thành phố Tuy Hoà",
-    "path": "Tuy Hoà, Phú Yên",
-    "path_with_type": "Thành phố Tuy Hoà, Tỉnh Phú Yên",
+    "name_with_type": "Thành phố Tuy Hòa",
+    "path": "Tuy Hòa, Phú Yên",
+    "path_with_type": "Thành phố Tuy Hòa, Tỉnh Phú Yên",
     "code": "555",
     "parent_code": "54"
   },
@@ -60,22 +60,22 @@
     "parent_code": "54"
   },
   "562": {
-    "name": "Tây Hoà",
+    "name": "Tây Hòa",
     "type": "huyen",
     "slug": "tay-hoa",
-    "name_with_type": "Huyện Tây Hoà",
-    "path": "Tây Hoà, Phú Yên",
-    "path_with_type": "Huyện Tây Hoà, Tỉnh Phú Yên",
+    "name_with_type": "Huyện Tây Hòa",
+    "path": "Tây Hòa, Phú Yên",
+    "path_with_type": "Huyện Tây Hòa, Tỉnh Phú Yên",
     "code": "562",
     "parent_code": "54"
   },
   "563": {
-    "name": "Phú Hoà",
+    "name": "Phú Hòa",
     "type": "huyen",
     "slug": "phu-hoa",
-    "name_with_type": "Huyện Phú Hoà",
-    "path": "Phú Hoà, Phú Yên",
-    "path_with_type": "Huyện Phú Hoà, Tỉnh Phú Yên",
+    "name_with_type": "Huyện Phú Hòa",
+    "path": "Phú Hòa, Phú Yên",
+    "path_with_type": "Huyện Phú Hòa, Tỉnh Phú Yên",
     "code": "563",
     "parent_code": "54"
   },

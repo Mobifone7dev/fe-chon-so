@@ -5,6 +5,7 @@ import "./styles.scss";
 const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
 import { useRouter } from "next/navigation"; // Dùng useRouter từ next/navigation
 import FormChooseNumber from "@components/modals/FormChooseNumber";
+import ReactLoading from 'react-loading';
 
 interface NumberRecord {
   TEL_NUMBER: string;
@@ -14,6 +15,7 @@ interface NumberRecord {
   LOAI_CK: string;
   NAME: string;
   CHANGE_DATETIME: string | null;
+  IS_HOLD: string | null;
 }
 
 const NumberTable: React.FC = () => {
@@ -218,7 +220,12 @@ const NumberTable: React.FC = () => {
         {/* Hiển thị cảnh báo */}
       </div>
       {loading ? (
-        <p>Loading...</p>
+        <div className="d-flex justify-center align-items-start flex-column" >
+          <p>Bạn đợi chút nhé!</p>
+          <ReactLoading type={'balls'} color={"#00e673"} height={67} width={40} />
+
+        </div>
+
       ) : (
         <>
           {data.length === 0 ? (
@@ -231,6 +238,7 @@ const NumberTable: React.FC = () => {
                   <th>Loại Cam Kết</th>
                   <th>Mã Kho Hiện Tại</th>
                   <th>Tên Kho Hiện Tại</th>
+                      <th>Trạng thái</th>
                   <th>Ngày Cắt Hủy Gần Nhất</th>
                   <th>Actions</th>
                 </tr>
@@ -242,6 +250,7 @@ const NumberTable: React.FC = () => {
                     <td>{item.LOAI_CK}</td>
                     <td>{item.SHOP_CODE}</td>
                     <td>{item.NAME}</td>
+                    <td>{item.IS_HOLD ? item.IS_HOLD : ""}</td>
                     <td>{item.CHANGE_DATETIME}</td>
                     <td>
                       <div className="actions-container">

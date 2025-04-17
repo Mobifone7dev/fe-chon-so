@@ -51,6 +51,7 @@
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.53.2",
     "react-loader-spinner": "^5.4.5",
+    "react-loading": "^2.0.3",
     "react-modal": "^3.16.1",
     "react-modern-drawer": "1.4.0",
     "react-paginate": "^8.2.0",

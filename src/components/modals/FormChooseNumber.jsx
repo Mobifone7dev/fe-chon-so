@@ -3,17 +3,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import tinhData from "../../mock/tinh-tp/tinh_tp_cty7.json"; // Dữ liệu tỉnh
 import Button from "react-bootstrap/Button";
-import dsHuyen from"../../mock/ds_huyen_ct7.json";
-const API_URL =  process.env.NEXTAUTH_APP_API_URL_SSL ;
+import dsHuyen from "../../mock/ds_huyen_ct7.json";
+
+const API_URL = process.env.NEXTAUTH_APP_API_URL_SSL;
 const FormChooseNumber = (props) => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedTelNumber, setSelectedTelNumber] = useState(
     props.selectedTelNumber
   );
-  const[codeGS, setCodeGS] = useState(props.codeGS);
+  const [codeGS, setCodeGS] = useState(props.codeGS);
   const [ip, setIp] = useState("");
   const [listShopCode, setListShopCode] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
@@ -26,25 +28,28 @@ const FormChooseNumber = (props) => {
     setShow(false);
     props.handleClose();
   };
+
   useEffect(() => {
     setShow(props.show);
-  }, [props.show]);
-  useEffect(() => {
-    console.log("props.selectedTelNumber",props.selectedTelNumber  )
     setSelectedTelNumber(props.selectedTelNumber);
     setFormData({
       ...formData,
       selectedTelNumber: props.selectedTelNumber,
       codeGS: props.codeGS,
     });
-  }, [props.selectedTelNumber,props.codeGS]);
+  }, [props.selectedTelNumber, props.codeGS, props.show]);
 
-
-
-  const [province, setProvince] = useState([]);
   const [districts, setDistricts] = useState([]);
-  const [fullAddress, setFullAddress] = useState();
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({
+    provinceCode: "",
+    districtCode: "",
+    shopCode: "",
+    fullName: "",
+    personalID: "",
+    fullAddress: "",
+    selectedTelNumber,
+    codeGS: "",
+  });
   // Hàm xử lý thay đổi tỉnh
   const handleProvinceChange = (e) => {
     const provinceCode = e.target.value;
@@ -62,10 +67,8 @@ const FormChooseNumber = (props) => {
 
         setFormData({
           ...formData,
-          province: provinceName,
           provinceCode: provinceCode,
           districtCode: "", // Reset quận
-          address: "", // Reset địa chỉ
         });
 
         import(`../../mock/quan-huyen/${provinceCode}.json`)
@@ -83,35 +86,57 @@ const FormChooseNumber = (props) => {
       });
   };
 
+  const handleShopCodeChange = (e) => {
+    const shopCode = e.target.value;
+    const shopData = listShopCode.find((item) => item.SHOP_CODE === shopCode);
+    setFormData({
+      ...formData,
+      shopCode: shopData ? shopData.SHOP_CODE : "",
+    });
+  };
   const handleDistrictChange = async (e) => {
+    console.log("e.target.value", e.target.value);
     const districtCode = e.target.value;
     const districtData = districts.find((item) => item.code === districtCode);
-    const districtName = districtData
-      ? districtData.name_with_type
-      : "Tên quận không có";
-      const filteredData = dsHuyen.filter((item) =>
-        item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
+    console.log("districtData", districtData);
+
+    const filteredData = dsHuyen.filter((item) =>
+      item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
+    );
+    console.log("filteredData", filteredData);
+    if (filteredData.length > 0) {
+      const result = await fetch(
+        API_URL +
+          `/chon-so/get-shopcode-by-district?districtCode=${filteredData[0].DISTRICT_CODE}&&provinceCode=${filteredData[0].PROVINCE_CODE}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+        }
       );
 
-      if(filteredData.length > 0){
-        const result = await fetch(API_URL +`chon-so/get-shopcode-by-district?districtCode=${filteredData[0].DISTRICT_CODE}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"}
-    });
-
-    const data = await result.json();
-    console.log("data shopcode", data);
+      const data = await result.json();
+      if (data && data.data.length > 0) {
+        let tempArrActive = data.data
+          .filter(
+            (item) =>
+              item.SHOP_TYPE == "200" ||
+              item.SHOP_TYPE == "201" ||
+              item.SHOP_TYPE == "101"
+          )
+          .filter((item) => item.STATUS == 1);
+        setListShopCode(tempArrActive);
+        setFormData({
+          ...formData,
+        });
       }
-    
+    }
 
     setFormData({
       ...formData,
       districtCode: districtCode,
-      district: districtName,
-      wardCode: "", // Reset xã/phường
-      address: "", // Reset địa chỉ
     });
   };
 
@@ -126,16 +151,81 @@ const FormChooseNumber = (props) => {
 
   const handleSubmit = () => {
     setLoading(true);
-    const data = {
-      ...formData,
-      selectedTelNumber: selectedTelNumber,
-      fullAddress: fullAddress,
+    const {
+      selectedTelNumber,
+      codeGS,
+      provinceCode,
+      districtCode,
+      fullAddress,
+      personalID,
+      shopCode,
+      fullName,
+    } = formData;
+    if (
+      selectedTelNumber.length == 0 ||
+      codeGS.length == 0 ||
+      provinceCode.length == 0 ||
+      districtCode.length == 0 ||
+      fullAddress.length == 0 ||
+      personalID.length == 0 ||
+      shopCode.length == 0
+    ) {
+      setError("Vui lòng nhập đầy đủ thông tin");
+      setLoading(false);
+      return;
+    }
+    const postData = {
+      in_hoten_kh: fullName,
+      in_cccd_kh: personalID,
+      in_tinh_kh: provinceCode,
+      in_huyen_kh: districtCode,
+      in_diachi_kh: fullAddress,
+      in_ip: ip,
+      in_shop_code: shopCode,
+      in_ma_gs: codeGS,
+      in_isdn: selectedTelNumber,
     };
-    console.log(data);
+    try {
+      const result = fetch(API_URL + "/chon-so/insertChonSo", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      });
+      if(result.status == 200){
+        setLoading(false);
+        resetForm();
+        setError("Gửi thông tin thành công!");
+        handleClose();
+      }
+    } catch (error) {
+      setLoading(false);
+      console.log("error", error);
+      setError("Có lỗi xảy ra trong quá trình xử lý dữ liệu.");
+    }
+
+    console.log("formData", formData);
     setTimeout(() => {
       setLoading(false);
+      resetForm();
       handleClose();
     }, 1000);
+  };
+  const resetForm = () => {
+    console.log("resetForm");
+    setFormData({
+      selectedTelNumber: "",
+      codeGS: "",
+      provinceCode: "",
+      districtCode: "",
+      fullName: "",
+      shopCode: "",
+      personalID: "",
+      fullAddress: "",
+    });
+    setError();
+    setDistricts([]);
   };
 
   return (
@@ -227,8 +317,47 @@ const FormChooseNumber = (props) => {
                 </select>
               </div>
 
+              {/* Shop Selection */}
               <div className="form-group">
-                <label htmlFor="personnalID">Số CCCD</label>
+                <label htmlFor="shopCode">Chọn Shop:</label>
+                <select
+                  id="shopCode"
+                  name="shopCode"
+                  value={formData.shopCode}
+                  onChange={handleShopCodeChange}
+                  required
+                  className="form-select"
+                >
+                  <option value="">Chọn shop</option>
+                  {listShopCode.length > 0 ? (
+                    listShopCode.map((shopCode) => (
+                      <option
+                        key={shopCode.SHOP_CODE}
+                        value={shopCode.SHOP_CODE}
+                      >
+                        {shopCode.NAME}
+                      </option>
+                    ))
+                  ) : (
+                    <option disabled>Chọn Shop để giữ số:</option>
+                  )}
+                </select>
+              </div>
+              <div className="form-group">
+                <label htmlFor="fullName">Tên đầy đủ:</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  value={formData.fullName}
+                  onChange={handleChange}
+                  placeholder="Nhập tên của bạn"
+                  required
+                />
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="personnalID">Số CCCD:</label>
                 <input
                   type="text"
                   id="personalID"
@@ -240,19 +369,22 @@ const FormChooseNumber = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="address">Địa chỉ cụ thể</label>
+                <label htmlFor="fullAddress">Địa chỉ cụ thể của bạn:</label>
                 <textarea
                   rows={3}
                   type="text-area"
-                  id="address"
-                  name="address"
-                  value={fullAddress}
+                  id="fullAddress"
+                  name="fullAddress"
+                  value={formData.fullAddress}
                   onChange={handleChange}
                   placeholder="Địa chỉ cụ thể"
                   required
                   className="form-control"
                 />
               </div>
+              <span style={{ color: "red" }}>
+                {error && error.length > 0 ? error : ""}
+              </span>
             </form>
           </div>
         </div>
