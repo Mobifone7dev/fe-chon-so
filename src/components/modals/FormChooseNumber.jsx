@@ -3,13 +3,24 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import tinhData from "../../mock/tinh-tp/tinh_tp_cty7.json"; // Dữ liệu tỉnh
 import Button from "react-bootstrap/Button";
-
+import dsHuyen from"../../mock/ds_huyen_ct7.json";
+const API_URL =  process.env.NEXTAUTH_APP_API_URL_SSL ;
 const FormChooseNumber = (props) => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [selectedTelNumber, setSelectedTelNumber] = useState(
     props.selectedTelNumber
   );
+  const[codeGS, setCodeGS] = useState(props.codeGS);
+  const [ip, setIp] = useState("");
+  const [listShopCode, setListShopCode] = useState([]);
+
+  useEffect(() => {
+    fetch("https://api.ipify.org?format=json")
+      .then((res) => res.json())
+      .then((data) => setIp(data.ip))
+      .catch((err) => console.error("Failed to fetch IP:", err));
+  }, []);
 
   const handleClose = () => {
     setShow(false);
@@ -19,12 +30,16 @@ const FormChooseNumber = (props) => {
     setShow(props.show);
   }, [props.show]);
   useEffect(() => {
+    console.log("props.selectedTelNumber",props.selectedTelNumber  )
     setSelectedTelNumber(props.selectedTelNumber);
     setFormData({
-        ...formData,
-        selectedTelNumber: props.selectedTelNumber,
-    })
-  }, [props.selectedTelNumber]);
+      ...formData,
+      selectedTelNumber: props.selectedTelNumber,
+      codeGS: props.codeGS,
+    });
+  }, [props.selectedTelNumber,props.codeGS]);
+
+
 
   const [province, setProvince] = useState([]);
   const [districts, setDistricts] = useState([]);
@@ -36,7 +51,6 @@ const FormChooseNumber = (props) => {
 
     import(`../../mock/tinh-tp/tinh_tp.json`)
       .then((module) => {
-        console.log("module", module);
         // const provinceFilter = module
         const provinces = Object.values(module.default);
         const provinceData = provinces.find(
@@ -56,6 +70,7 @@ const FormChooseNumber = (props) => {
 
         import(`../../mock/quan-huyen/${provinceCode}.json`)
           .then((module) => {
+            console.log("module.default", module.default);
             setDistricts(Object.values(module.default));
           })
           .catch((error) => {
@@ -68,12 +83,28 @@ const FormChooseNumber = (props) => {
       });
   };
 
-  const handleDistrictChange = (e) => {
+  const handleDistrictChange = async (e) => {
     const districtCode = e.target.value;
     const districtData = districts.find((item) => item.code === districtCode);
     const districtName = districtData
       ? districtData.name_with_type
       : "Tên quận không có";
+      const filteredData = dsHuyen.filter((item) =>
+        item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
+      );
+
+      if(filteredData.length > 0){
+        const result = await fetch(API_URL +`chon-so/get-shopcode-by-district?districtCode=${filteredData[0].DISTRICT_CODE}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"}
+    });
+
+    const data = await result.json();
+    console.log("data shopcode", data);
+      }
+    
 
     setFormData({
       ...formData,
@@ -139,15 +170,16 @@ const FormChooseNumber = (props) => {
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="codeqs">Mã giữ chỗ</label>
+                  <label htmlFor="codeGS">Mã giữ chỗ</label>
                   <input
                     type="text"
-                    id="codeqs"
-                    name="codeqs"
-                    value={formData.codeqs}
+                    id="codeGS"
+                    name="codeGS"
+                    value={formData.codeGS}
                     onChange={handleChange}
                     placeholder="Mã giữ chỗ"
                     required
+                    disabled={true}
                   />
                 </div>
               </div>

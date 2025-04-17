@@ -29,6 +29,7 @@ const NumberTable: React.FC = () => {
   const [ip, setIp] = useState('');
   const [showPopup, setShowPopup] = useState(false); // State điều khiển popup
   const [selectedTelNumber, setSelectedTelNumber] = useState<string | null>(""); // Số điện thoại được chọn
+  const [codeGS, setCodeGS] = useState<string>(""); // Mã QR được chọn
 
   useEffect(() => {
     fetch('https://api.ipify.org?format=json')
@@ -52,7 +53,7 @@ const NumberTable: React.FC = () => {
 
       // Gửi yêu cầu tới API
       const response = await axios.get(
-        `${API_URL_TABLE}/chonso?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
+        `${API_URL_TABLE}/chon-so/get-chon-so?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
       );
       console.log("Dữ liệu trả về từ API:", response.data);
       const resultTime = new Date().toLocaleString();
@@ -130,9 +131,26 @@ const NumberTable: React.FC = () => {
     //   console.error("Lỗi khi gọi API chọn số:", err);
     //   alert("❌ Lỗi hệ thống");
     // }
+    const now = new Date();
+
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const hours = String(now.getHours()).padStart(2, '0');
+
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0'); // tháng bắt đầu từ 0
+    const year = now.getFullYear();
+
+    const formatted = `${seconds}${minutes}${hours}${day}${month}${year}`;
+    setCodeGS("GS" + formatted); // Cập nhật mã GS
     setSelectedTelNumber(telNumber); // Cập nhật số điện thoại được chọn
     setShowPopup(true); // Hiện popup khi người dùng chọn số
   };
+  const resetData = () => {
+    setShowPopup((prev) => !prev);
+    setCodeGS(""); // Đặt lại mã GS
+    setSelectedTelNumber(null); // Đặt lại số điện thoại được chọn
+  }
   return (
     <div className="table-container">
       <h1>Tra Cứu Kho Số</h1>
@@ -242,7 +260,7 @@ const NumberTable: React.FC = () => {
           )}
         </>
       )}
-      <FormChooseNumber show={showPopup} handleClose={() => { setShowPopup((prev) => !prev) }} selectedTelNumber={selectedTelNumber} />
+      <FormChooseNumber show={showPopup} handleClose={resetData} selectedTelNumber={selectedTelNumber} codeGS={codeGS} />
     </div>
   );
 };

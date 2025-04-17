@@ -1,0 +1,682 @@
+[
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32538,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "SHI",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Sông Hinh",
+    "VUNG_CODE": "PYE5",
+    "VUNG_NAME": "Phú Yên 5"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32084,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "THA",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "TP.Tuy Hòa",
+    "VUNG_CODE": "PYE1",
+    "VUNG_NAME": "Phú Yên 1"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32015,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "TAN",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Tuy An",
+    "VUNG_CODE": "PYE2",
+    "VUNG_NAME": "Phú Yên 2"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32206,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "SHO",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H. Sơn Hoà",
+    "VUNG_CODE": "PYE3",
+    "VUNG_NAME": "Phú Yên 3"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32401,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "THO",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Tây Hòa",
+    "VUNG_CODE": "PYE5",
+    "VUNG_NAME": "Phú Yên 5"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32081,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "DHO",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Đông Hòa",
+    "VUNG_CODE": "PYE4",
+    "VUNG_NAME": "Phú Yên 4"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32400,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "PHO",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Phú Hoà",
+    "VUNG_CODE": "PYE3",
+    "VUNG_NAME": "Phú Yên 3"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32083,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "SCA",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "T/X Sông Cầu",
+    "VUNG_CODE": "PYE2",
+    "VUNG_NAME": "Phú Yên 2"
+  },
+  {
+    "PARENT_ID": 31809,
+    "AREA_SK": 32082,
+    "PROVINCE_CODE": "PYE",
+    "DISTRICT_CODE": "DXU",
+    "PROVINCE_NAME": "Phú Yên",
+    "DISTRICT_NAME": "H.Đồng Xuân",
+    "VUNG_CODE": "PYE2",
+    "VUNG_NAME": "Phú Yên 2"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32087,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "DSO",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Đắc Song",
+    "VUNG_CODE": "DNO6",
+    "VUNG_NAME": "Đắc Song"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32219,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "CJU",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Cư Jut",
+    "VUNG_CODE": "DNO2",
+    "VUNG_NAME": "Cư Jut"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32303,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "GNG",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Gia Nghĩa",
+    "VUNG_CODE": "DNO1",
+    "VUNG_NAME": "Gia Nghĩa - Đắk Glong"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32442,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "DGL",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Đắk GLong",
+    "VUNG_CODE": "DNO1",
+    "VUNG_NAME": "Gia Nghĩa - Đắk Glong"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32095,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "BMT",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Buôn Mê Thuột",
+    "VUNG_CODE": "DLA1",
+    "VUNG_NAME": "Buôn Mê Thuột"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32109,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "DMI",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Đăk Min",
+    "VUNG_CODE": "DNO3",
+    "VUNG_NAME": "Đăk Min"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32402,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "DRL",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Đắc RLấp",
+    "VUNG_CODE": "DNO4",
+    "VUNG_NAME": "Đắc RLấp - Tuy Đức"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32102,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "IBA",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Ia Pa",
+    "VUNG_CODE": "GLA7",
+    "VUNG_NAME": "Ayun Pa - Ia Pa"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32103,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "PLE",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Pleiku",
+    "VUNG_CODE": "GLA1",
+    "VUNG_NAME": "Pleiku"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32104,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "PTH",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Phú Thiện",
+    "VUNG_CODE": "GLA9",
+    "VUNG_NAME": "Phú Thiện"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32120,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "CPU",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Chư Pứh",
+    "VUNG_CODE": "GLA6",
+    "VUNG_NAME": "Chư Sê - Chư Pứh"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32101,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "DCO",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Đức Cơ",
+    "VUNG_CODE": "GLA11",
+    "VUNG_NAME": "Đức Cơ"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32131,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "CPA",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Chư Pả",
+    "VUNG_CODE": "GLA14",
+    "VUNG_NAME": "Chư Pả"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32132,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "CPR",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Chư Prông",
+    "VUNG_CODE": "GLA2",
+    "VUNG_NAME": "Chư Prông"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32133,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "DDO",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Đắk Đoa",
+    "VUNG_CODE": "GLA4",
+    "VUNG_NAME": "Đăk Đoa - Mang Yang"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32134,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "DPO",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Đắk Pơ",
+    "VUNG_CODE": "GLA13",
+    "VUNG_NAME": "Đăk Pơ - Kông Chro"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32276,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "APA",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Ayun Pa",
+    "VUNG_CODE": "GLA7",
+    "VUNG_NAME": "Ayun Pa - Ia Pa"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32277,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "KCH",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Kông ChRo",
+    "VUNG_CODE": "GLA13",
+    "VUNG_NAME": "Đăk Pơ - Kông Chro"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32307,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "AKH",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "An Khê",
+    "VUNG_CODE": "GLA5",
+    "VUNG_NAME": "An Khê"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32308,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "IGR",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Ia Grai",
+    "VUNG_CODE": "GLA3",
+    "VUNG_NAME": "Ia Grai"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32328,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "KBN",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "KBang",
+    "VUNG_CODE": "GLA12",
+    "VUNG_NAME": "Kbang"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32329,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "MYA",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Mang Yang",
+    "VUNG_CODE": "GLA4",
+    "VUNG_NAME": "Đăk Đoa - Mang Yang"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32453,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "KBA",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Krông Ba",
+    "VUNG_CODE": "GLA8",
+    "VUNG_NAME": "Krông Ba"
+  },
+  {
+    "PARENT_ID": 31804,
+    "AREA_SK": 32491,
+    "PROVINCE_CODE": "GLA",
+    "DISTRICT_CODE": "CSE",
+    "PROVINCE_NAME": "Gia Lai",
+    "DISTRICT_NAME": "Chư Sê",
+    "VUNG_CODE": "GLA6",
+    "VUNG_NAME": "Chư Sê - Chư Pứh"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 31836,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "BHO",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Buôn Hồ",
+    "VUNG_CODE": "DLA2",
+    "VUNG_NAME": "Buôn Hồ - Krông Buk"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 31937,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "NHO",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Ninh Hòa",
+    "VUNG_CODE": "KHO2",
+    "VUNG_NAME": "Ninh Hòa"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 31965,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "CRA",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Cam Ranh",
+    "VUNG_CODE": "KHO5",
+    "VUNG_NAME": "Cam Ranh"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 31966,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "NTR",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Nha Trang",
+    "VUNG_CODE": "KHO1",
+    "VUNG_NAME": "Nha Trang"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32315,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "CLA",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Cam Lâm",
+    "VUNG_CODE": "KHO4",
+    "VUNG_NAME": "Cam Lâm - Khánh Sơn"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32316,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "VNI",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Vạn Ninh",
+    "VUNG_CODE": "KHO6",
+    "VUNG_NAME": "Vạn Ninh"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32355,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "KSO",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Khánh Sơn",
+    "VUNG_CODE": "KHO4",
+    "VUNG_NAME": "Cam Lâm - Khánh Sơn"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32356,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "TSA",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Trường Sa",
+    "VUNG_CODE": "KHO8",
+    "VUNG_NAME": "Trường Sa"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32521,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "DKH",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Diên Khánh",
+    "VUNG_CODE": "KHO3",
+    "VUNG_NAME": "Diên Khánh"
+  },
+  {
+    "PARENT_ID": 31816,
+    "AREA_SK": 32551,
+    "PROVINCE_CODE": "KHO",
+    "DISTRICT_CODE": "KVI",
+    "PROVINCE_NAME": "Khánh Hòa",
+    "DISTRICT_NAME": "Khánh Vĩnh",
+    "VUNG_CODE": "KHO7",
+    "VUNG_NAME": "Khánh Vĩnh"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32029,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "CMG",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Cư Mgar",
+    "VUNG_CODE": "DLA8",
+    "VUNG_NAME": "Cư Mgar"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 31938,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "DHA",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Đắk Hà",
+    "VUNG_CODE": "KON2",
+    "VUNG_NAME": "Đắk Hà"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 31939,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "DTO",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Đắk Tô",
+    "VUNG_CODE": "KON5",
+    "VUNG_NAME": "Tu Mơ Rông - Đắk Tô"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 31940,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "NHO",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Ngọc Hồi",
+    "VUNG_CODE": "KON3",
+    "VUNG_NAME": "Ngọc Hồi"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 31967,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "STH",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Sa Thầy",
+    "VUNG_CODE": "KON6",
+    "VUNG_NAME": "Sa Thầy - Ia H'Drai"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32317,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "TMR",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Tu Mơ Rông",
+    "VUNG_CODE": "KON5",
+    "VUNG_NAME": "Tu Mơ Rông - Đắk Tô"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32357,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "DAK",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Đắk GLây",
+    "VUNG_CODE": "KON7",
+    "VUNG_NAME": "Đắk GLây"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32358,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "KOT",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "KonTum",
+    "VUNG_CODE": "KON1",
+    "VUNG_NAME": "Kon Tum"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32498,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "KON",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Kon Rẫy",
+    "VUNG_CODE": "KON4",
+    "VUNG_NAME": "Kon Rẫy - Kon Plong"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32522,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "KOP",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Kon Plong",
+    "VUNG_CODE": "KON4",
+    "VUNG_NAME": "Kon Rẫy - Kon Plong"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32053,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "EKA",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Ea Kar",
+    "VUNG_CODE": "DLA5",
+    "VUNG_NAME": "Ea Kar - M'Drắc"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32054,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "KBU",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Krông Buk",
+    "VUNG_CODE": "DLA2",
+    "VUNG_NAME": "Buôn Hồ - Krông Buk"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32110,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "KNO",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Krông Nô",
+    "VUNG_CODE": "DNO5",
+    "VUNG_NAME": "Krông Nô"
+  },
+  {
+    "PARENT_ID": 31764,
+    "AREA_SK": 32111,
+    "PROVINCE_CODE": "DNO",
+    "DISTRICT_CODE": "TDU",
+    "PROVINCE_NAME": "Đắk Nông",
+    "DISTRICT_NAME": "Tuy Đức",
+    "VUNG_CODE": "DNO4",
+    "VUNG_NAME": "Đắc RLấp - Tuy Đức"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32055,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "KNA",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Krông Năng",
+    "VUNG_CODE": "DLA11",
+    "VUNG_NAME": "Krông Năng"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32056,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "LAC",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Lắc",
+    "VUNG_CODE": "DLA7",
+    "VUNG_NAME": "Lắc"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32057,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "MDR",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "M'Drắc",
+    "VUNG_CODE": "DLA5",
+    "VUNG_NAME": "Ea Kar - M'Drắc"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32091,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "KPA",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Krông Pắc",
+    "VUNG_CODE": "DLA4",
+    "VUNG_NAME": "Krông Pắc"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32218,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "BDO",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Buôn Đôn",
+    "VUNG_CODE": "DLA9",
+    "VUNG_NAME": "Buôn Đôn"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32255,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "CKU",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Cư Kuin",
+    "VUNG_CODE": "DLA10",
+    "VUNG_NAME": "Cư Kuin"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32280,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "ESU",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Ea Súp",
+    "VUNG_CODE": "DLA12",
+    "VUNG_NAME": "Ea Súp"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32281,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "KBO",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Krông Bông",
+    "VUNG_CODE": "DLA13",
+    "VUNG_NAME": "Krông Bông"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32374,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "KAN",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Krông Ana",
+    "VUNG_CODE": "DLA6",
+    "VUNG_NAME": "Krông Ana"
+  },
+  {
+    "PARENT_ID": 31783,
+    "AREA_SK": 32578,
+    "PROVINCE_CODE": "DLA",
+    "DISTRICT_CODE": "EHL",
+    "PROVINCE_NAME": "Đắk Lắk",
+    "DISTRICT_NAME": "Ea Hleo",
+    "VUNG_CODE": "DLA3",
+    "VUNG_NAME": "Ea Hleo"
+  },
+  {
+    "PARENT_ID": 31819,
+    "AREA_SK": 32601,
+    "PROVINCE_CODE": "KON",
+    "DISTRICT_CODE": "IHD",
+    "PROVINCE_NAME": "Kon Tum",
+    "DISTRICT_NAME": "Ia H'Drai",
+    "VUNG_CODE": "KON6",
+    "VUNG_NAME": "Sa Thầy - Ia H'Drai"
+  }
+]
