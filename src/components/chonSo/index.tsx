@@ -21,7 +21,7 @@ interface NumberRecord {
 const NumberTable: React.FC = () => {
   const [data, setData] = useState<NumberRecord[]>([]); // Dữ liệu số điện thoại
   const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
-  const [searchTerm, setSearchTerm] = useState<string>("*88*99*"); // Từ khóa tìm kiếm
+  const [searchTerm, setSearchTerm] = useState<string>(""); // Từ khóa tìm kiếm
   const [warning, setWarning] = useState<string>(""); // Cảnh báo nhập liệu
   const [type, setType] = useState<string>(""); // Lưu giá trị type
   const [shopCodeInput, setShopCodeInput] = useState<string>("");
@@ -184,13 +184,13 @@ const NumberTable: React.FC = () => {
             </div>
           )}
         </div>
-        <input
+        {/* <input
           type="text"
           value={shopCodeInput}
           onChange={handleShopCode} // Cập nhật từ khóa khi người dùng nhập
           placeholder="Tìm kiếm kho số"
           className="search-input" // Thêm class cho input
-        />
+        /> */}
         <select
           className="search-select"
           value={type}
@@ -231,41 +231,37 @@ const NumberTable: React.FC = () => {
           {data.length === 0 ? (
             <p>No phone numbers found.</p>
           ) : (
-            <table>
-              <thead>
-                <tr>
-                  <th>Số Thuê Bao</th>
-                  <th>Loại Cam Kết</th>
-                  <th>Mã Kho Hiện Tại</th>
-                  <th>Tên Kho Hiện Tại</th>
-                      <th>Trạng thái</th>
-                  <th>Ngày Cắt Hủy Gần Nhất</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((item) => (
-                  <tr key={item.TEL_NUMBER}>
-                    <td>{item.TEL_NUMBER}</td>
-                    <td>{item.LOAI_CK}</td>
-                    <td>{item.SHOP_CODE}</td>
-                    <td>{item.NAME}</td>
-                    <td>{item.IS_HOLD ? item.IS_HOLD : ""}</td>
-                    <td>{item.CHANGE_DATETIME}</td>
-                    <td>
-                      <div className="actions-container">
-                        <button
-                          className="choose-btn"
-                          onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
-                        >
-                          Chọn số
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                <div className="table-responsive" style={{ maxWidth: 600 }}>
+                  <table className=" table table table-row-dashed table-striped  table-row-gray-300 align-middle gs-0 gy-3">
+                    <thead>
+                      <tr>
+                        <th>Số Thuê Bao</th>
+                        <th>Loại Cam Kết</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.map((item) => (
+                        <tr key={item.TEL_NUMBER}>
+                          <td>{item.TEL_NUMBER}</td>
+                          <td>{item.NAME}</td>
+                          <td>
+                            <div className="actions-container">
+                              <button
+                                className="choose-btn"
+                                onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
+                              >
+                                Chọn số
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+
+                </div>
+
           )}
         </>
       )}
