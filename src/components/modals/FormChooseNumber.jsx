@@ -274,7 +274,7 @@ const FormChooseNumber = (props) => {
           <div className="form-container">
             <form onSubmit={handleSubmit}>
               <div className="d-flex justify-content-between">
-                <div className="form-group">
+                <div className="form-group me-2">
                   <label htmlFor="selectedTelNumber">Số thuê bao</label>
                   <input
                     type="text"

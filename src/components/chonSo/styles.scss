@@ -1,31 +1,35 @@
 .table-container {
-    margin: 20px auto;
-    max-width: 100%;
-    overflow-x: auto;
-    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    font-family: 'Roboto', sans-serif;
-min-height: 500px;
-    .search-container {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-    .warning-message{
-        color: red;
-        font-size: 14px;
-        margin-top: 5px;
-        font-style: italic;
+  margin: 20px auto;
+  max-width: 100%;
+  overflow-x: auto;
+  // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Roboto", sans-serif;
+  min-height: 500px;
+  .search-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .warning-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    font-style: italic;
+  }
+  .search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 300px;
+    &:focus {
+        border-color: rgb(87, 93, 99);
+        outline: none;
       }
-    .search-input {
-        padding: 8px 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        font-size: 14px;
-        width: 300px;
-    }
-.tooltip-text {
+  }
+  .tooltip-text {
     position: absolute;
     background: #ffffff;
     color: #000000;
@@ -39,274 +43,276 @@ min-height: 500px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 
     strong {
-        color: #007bff; // ✅ màu xanh
-        font-size: 16px; // ✅ chữ to hơn
-        font-weight: bold; // giữ đậm
+      color: #007bff; // ✅ màu xanh
+      font-size: 16px; // ✅ chữ to hơn
+      font-weight: bold; // giữ đậm
     }
-}
+  }
 
-.tooltip-text code {
+  .tooltip-text code {
     background-color: #d8d8d8;
     padding: 2px 4px;
     border-radius: 4px;
     font-size: 13px;
     font-family: monospace;
     color: #2192ee;
-}
-        .search-select {
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 14px;
-            width: 200px;
-    
-        &:focus {
-                border-color: #4caf50;
-                box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-            }
-        
-            &:hover {
-                border-color: #888;
-            }
-        
-            option {
-                font-size: 14px;
-            }
-        }
-    .search-button {
-        padding: 8px 16px;
-        border: none;
-        background-color: #2f792f;
-        color: white;
-        font-size: 14px;
-        border-radius: 4px;
-        cursor: pointer;
+  }
+  .search-select {
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    min-width: 220px;
+    background: #fff;
+    transition: border-color 0.2s ease;
+
+    &:focus {
     }
 
-    .search-button:hover {
-        background-color: #45a049;
+    &:focus {
+      border-color: #4caf50;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+      border-color: #0070f3;
+      outline: none;
     }
 
-    h1 {
-        text-align: center;
-        font-size: 24px;
-        color: #333;
-        font-weight: 600;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        padding-bottom: 7px;
+    &:hover {
+      border-color: #888;
+    }
+
+    option {
+      font-size: 14px;
+    }
+  }
+  .search-button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #2f792f;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .search-button:hover {
+    background-color: #45a049;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 7px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    background-color: #ccc;
+
+    th,
+    td {
+      padding: 8px;
+      font-size: 12px;
+      border: 1px solid #ddd;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    td img {
+      max-width: 160px;
+      max-height: 140px;
+      display: block;
+      margin: auto;
+    }
+
+    .actions-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+      border-radius: 4px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .edit-btn,
+    .delete-btn,
+    .choose-btn {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      text-transform: uppercase;
+      transition: background-color 0.3s;
+      background-color: #2f792f;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      box-sizing: border-box;
+
+      &::placeholder {
+        color: #888;
+        font-style: italic;
+      }
+
+      &:focus {
+        border-color: #4caf50;
+        box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+      }
+
+      &:hover {
+        border-color: #888;
+      }
+    }
+
+    .choose-btn {
+      background-color: #2f792f;
+      color: white;
+    }
+
+    .edit-btn:hover {
+      background-color: #45a049;
+    }
+
+    .delete-btn {
+      background-color: #f44336;
+      color: white;
+    }
+
+    .delete-btn:hover {
+      background-color: #e53935;
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+
+    button {
+      margin: 0 5px;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background-color: #f4f4f4;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    button:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+
+    span {
+      margin: 0 10px;
+      font-size: 14px;
+    }
+
+    .page-input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+    }
+  }
+
+  // Responsive Styles for smaller screens
+  @media (max-width: 768px) {
+    .search-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .search-input {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .table-container {
+      overflow-x: scroll;
     }
 
     table {
-        width: 100%;
-        border-collapse: collapse;
-        text-align: left;
-        background-color: #ccc;
+      font-size: 10px; // Giảm kích thước chữ trong bảng
+    }
 
-        th,
-        td {
-            padding: 8px;
-            font-size: 12px;
-            border: 1px solid #ddd;
-            text-align: center;
-            vertical-align: middle;
-        }
+    th,
+    td {
+      padding: 6px; // Điều chỉnh padding cho nhỏ gọn
+    }
 
-        th {
-            background-color: #f4f4f4;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
-        td img {
-            max-width: 160px;
-            max-height: 140px;
-            display: block;
-            margin: auto;
-        }
-
-        .actions-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 5px;
-            border-radius: 4px;
-        }
-
-        .actions {
-            display: flex;
-            gap: 10px;
-            padding: 0;
-            margin: 0;
-        }
-
-        .edit-btn,
-        .delete-btn,
-        .choose-btn {
-            padding: 6px 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 12px;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-            background-color: #2f792f;
-
-        }
-        .search-input {
-            width: 100%;
-            padding: 10px 15px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            outline: none;
-            box-sizing: border-box;
-          
-            &::placeholder {
-              color: #888;
-              font-style: italic;
-            }
-          
-            &:focus {
-              border-color: #4CAF50;
-              box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
-            }
-          
-            &:hover {
-              border-color: #888;
-            }
-          }
-          
-         
-            
-          
-        .choose-btn {
-            background-color: #2f792f;
-            color: white;
-
-        }
-
-        .edit-btn:hover {
-            background-color: #45a049;
-        }
-
-        .delete-btn {
-            background-color: #f44336;
-            color: white;
-        }
-
-        .delete-btn:hover {
-            background-color: #e53935;
-        }
+    td img {
+      max-width: 120px;
+      max-height: 100px;
     }
 
     .pagination {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 10px 0;
+      flex-direction: column;
+      align-items: flex-start;
 
-        button {
-            margin: 0 5px;
-            padding: 6px 12px;
-            border: 1px solid #ccc;
-            background-color: #f4f4f4;
-            cursor: pointer;
-            font-size: 12px;
-        }
+      button {
+        margin: 5px 0;
+      }
 
-        button:disabled {
-            background-color: #ddd;
-            cursor: not-allowed;
-        }
+      .page-input {
+        width: 40px;
+      }
+    }
+  }
 
-        span {
-            margin: 0 10px;
-            font-size: 14px;
-        }
-
-        .page-input {
-            width: 50px;
-            text-align: center;
-            margin: 0 10px;
-        }
+  @media (max-width: 480px) {
+    .search-input {
+      width: 100%;
+      font-size: 12px; // Giảm font-size để phù hợp với màn hình nhỏ
     }
 
-    // Responsive Styles for smaller screens
-    @media (max-width: 768px) {
-        .search-container {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .search-input {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .table-container {
-            overflow-x: scroll;
-        }
-
-        table {
-            font-size: 10px; // Giảm kích thước chữ trong bảng
-        }
-
-        th,
-        td {
-            padding: 6px; // Điều chỉnh padding cho nhỏ gọn
-        }
-
-        td img {
-            max-width: 120px;
-            max-height: 100px;
-        }
-
-        .pagination {
-            flex-direction: column;
-            align-items: flex-start;
-
-            button {
-                margin: 5px 0;
-            }
-
-            .page-input {
-                width: 40px;
-            }
-        }
+    h1 {
+      font-size: 18px; // Giảm kích thước tiêu đề
+      letter-spacing: 1px; // Điều chỉnh khoảng cách chữ
     }
 
-    @media (max-width: 480px) {
-        .search-input {
-            width: 100%;
-            font-size: 12px; // Giảm font-size để phù hợp với màn hình nhỏ
-        }
-
-        h1 {
-            font-size: 18px; // Giảm kích thước tiêu đề
-            letter-spacing: 1px; // Điều chỉnh khoảng cách chữ
-        }
-
-        .table-container {
-            padding: 10px; // Thêm padding cho container
-        }
-
-        .pagination {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .page-input {
-            width: 35px;
-        }
+    .table-container {
+      padding: 10px; // Thêm padding cho container
     }
+
+    .pagination {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .page-input {
+      width: 35px;
+    }
+  }
 }
