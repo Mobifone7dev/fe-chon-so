@@ -155,7 +155,7 @@ const NumberTable: React.FC = () => {
   }
   return (
     <div className="table-container">
-      <h1>Tra Cứu Kho Số</h1>
+      <h1 style={{ textAlign: "left" }}>Tra Cứu Kho Số</h1>
       <div className="search-container">
         <div style={{ position: "relative" }}>
           {/* input và tooltip ở đây */}
@@ -231,7 +231,7 @@ const NumberTable: React.FC = () => {
           {data.length === 0 ? (
             <p>No phone numbers found.</p>
           ) : (
-                <div className="table-responsive" style={{ maxWidth: 600 }}>
+                <div className="table-responsive" style={{ maxWidth: 610 }}>
                   <table className=" table table table-row-dashed table-striped  table-row-gray-300 align-middle gs-0 gy-3">
                     <thead>
                       <tr>
@@ -244,7 +244,7 @@ const NumberTable: React.FC = () => {
                       {data.map((item) => (
                         <tr key={item.TEL_NUMBER}>
                           <td>{item.TEL_NUMBER}</td>
-                          <td>{item.NAME}</td>
+                          <td>{item.LOAI_CK}</td>
                           <td>
                             <div className="actions-container">
                               <button

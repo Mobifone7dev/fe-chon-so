@@ -159,6 +159,8 @@ min-height: 500px;
             font-size: 12px;
             text-transform: uppercase;
             transition: background-color 0.3s;
+            background-color: #2f792f;
+
         }
         .search-input {
             width: 100%;
@@ -188,8 +190,9 @@ min-height: 500px;
             
           
         .choose-btn {
-            background-color: #727477;
+            background-color: #2f792f;
             color: white;
+
         }
 
         .edit-btn:hover {
