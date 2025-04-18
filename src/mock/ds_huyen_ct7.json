@@ -95,7 +95,7 @@
     "PROVINCE_CODE": "DNO",
     "DISTRICT_CODE": "DSO",
     "PROVINCE_NAME": "Đắk Nông",
-    "DISTRICT_NAME": "Đắc Song",
+    "DISTRICT_NAME": "Đắk Song",
     "VUNG_CODE": "DNO6",
     "VUNG_NAME": "Đắc Song"
   },
@@ -105,7 +105,7 @@
     "PROVINCE_CODE": "DNO",
     "DISTRICT_CODE": "CJU",
     "PROVINCE_NAME": "Đắk Nông",
-    "DISTRICT_NAME": "Cư Jut",
+    "DISTRICT_NAME": "Cư Jút",
     "VUNG_CODE": "DNO2",
     "VUNG_NAME": "Cư Jut"
   },
@@ -125,7 +125,7 @@
     "PROVINCE_CODE": "DNO",
     "DISTRICT_CODE": "DGL",
     "PROVINCE_NAME": "Đắk Nông",
-    "DISTRICT_NAME": "Đắk GLong",
+    "DISTRICT_NAME": "Đăk Glong",
     "VUNG_CODE": "DNO1",
     "VUNG_NAME": "Gia Nghĩa - Đắk Glong"
   },
@@ -135,9 +135,9 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "BMT",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Buôn Mê Thuột",
+    "DISTRICT_NAME": "Buôn Ma Thuột",
     "VUNG_CODE": "DLA1",
-    "VUNG_NAME": "Buôn Mê Thuột"
+    "VUNG_NAME": "Buôn Ma Thuột"
   },
   {
     "PARENT_ID": 31764,
@@ -145,7 +145,7 @@
     "PROVINCE_CODE": "DNO",
     "DISTRICT_CODE": "DMI",
     "PROVINCE_NAME": "Đắk Nông",
-    "DISTRICT_NAME": "Đăk Min",
+    "DISTRICT_NAME": "Đắk Mil",
     "VUNG_CODE": "DNO3",
     "VUNG_NAME": "Đăk Min"
   },
@@ -155,7 +155,7 @@
     "PROVINCE_CODE": "DNO",
     "DISTRICT_CODE": "DRL",
     "PROVINCE_NAME": "Đắk Nông",
-    "DISTRICT_NAME": "Đắc RLấp",
+    "DISTRICT_NAME": "Đắk R'Lấp",
     "VUNG_CODE": "DNO4",
     "VUNG_NAME": "Đắc RLấp - Tuy Đức"
   },
@@ -195,7 +195,7 @@
     "PROVINCE_CODE": "GLA",
     "DISTRICT_CODE": "CPU",
     "PROVINCE_NAME": "Gia Lai",
-    "DISTRICT_NAME": "Chư Pứh",
+    "DISTRICT_NAME": "Chư Pưh",
     "VUNG_CODE": "GLA6",
     "VUNG_NAME": "Chư Sê - Chư Pứh"
   },
@@ -215,7 +215,7 @@
     "PROVINCE_CODE": "GLA",
     "DISTRICT_CODE": "CPA",
     "PROVINCE_NAME": "Gia Lai",
-    "DISTRICT_NAME": "Chư Pả",
+    "DISTRICT_NAME": "Chư Păh",
     "VUNG_CODE": "GLA14",
     "VUNG_NAME": "Chư Pả"
   },
@@ -235,7 +235,7 @@
     "PROVINCE_CODE": "GLA",
     "DISTRICT_CODE": "DDO",
     "PROVINCE_NAME": "Gia Lai",
-    "DISTRICT_NAME": "Đắk Đoa",
+    "DISTRICT_NAME": "Đăk Đoa",
     "VUNG_CODE": "GLA4",
     "VUNG_NAME": "Đăk Đoa - Mang Yang"
   },
@@ -245,7 +245,7 @@
     "PROVINCE_CODE": "GLA",
     "DISTRICT_CODE": "DPO",
     "PROVINCE_NAME": "Gia Lai",
-    "DISTRICT_NAME": "Đắk Pơ",
+    "DISTRICT_NAME": "Đăk Pơ",
     "VUNG_CODE": "GLA13",
     "VUNG_NAME": "Đăk Pơ - Kông Chro"
   },
@@ -315,7 +315,7 @@
     "PROVINCE_CODE": "GLA",
     "DISTRICT_CODE": "KBA",
     "PROVINCE_NAME": "Gia Lai",
-    "DISTRICT_NAME": "Krông Ba",
+    "DISTRICT_NAME": "Krông Pa",
     "VUNG_CODE": "GLA8",
     "VUNG_NAME": "Krông Ba"
   },
@@ -435,7 +435,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "CMG",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Cư Mgar",
+    "DISTRICT_NAME": "Cư M'gar",
     "VUNG_CODE": "DLA8",
     "VUNG_NAME": "Cư Mgar"
   },
@@ -495,9 +495,9 @@
     "PROVINCE_CODE": "KON",
     "DISTRICT_CODE": "DAK",
     "PROVINCE_NAME": "Kon Tum",
-    "DISTRICT_NAME": "Đắk GLây",
+    "DISTRICT_NAME": "Đắk Glei",
     "VUNG_CODE": "KON7",
-    "VUNG_NAME": "Đắk GLây"
+    "VUNG_NAME": "Đắk Glei"
   },
   {
     "PARENT_ID": 31819,
@@ -505,7 +505,7 @@
     "PROVINCE_CODE": "KON",
     "DISTRICT_CODE": "KOT",
     "PROVINCE_NAME": "Kon Tum",
-    "DISTRICT_NAME": "KonTum",
+    "DISTRICT_NAME": "Kon Tum",
     "VUNG_CODE": "KON1",
     "VUNG_NAME": "Kon Tum"
   },
@@ -525,7 +525,7 @@
     "PROVINCE_CODE": "KON",
     "DISTRICT_CODE": "KOP",
     "PROVINCE_NAME": "Kon Tum",
-    "DISTRICT_NAME": "Kon Plong",
+    "DISTRICT_NAME": "Kon Plông",
     "VUNG_CODE": "KON4",
     "VUNG_NAME": "Kon Rẫy - Kon Plong"
   },
@@ -545,7 +545,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "KBU",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Krông Buk",
+    "DISTRICT_NAME": "Krông Búk",
     "VUNG_CODE": "DLA2",
     "VUNG_NAME": "Buôn Hồ - Krông Buk"
   },
@@ -585,7 +585,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "LAC",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Lắc",
+    "DISTRICT_NAME": "Lắk",
     "VUNG_CODE": "DLA7",
     "VUNG_NAME": "Lắc"
   },
@@ -595,7 +595,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "MDR",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "M'Drắc",
+    "DISTRICT_NAME": "M'Đrắk",
     "VUNG_CODE": "DLA5",
     "VUNG_NAME": "Ea Kar - M'Drắc"
   },
@@ -655,7 +655,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "KAN",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Krông Ana",
+    "DISTRICT_NAME": "Krông A Na",
     "VUNG_CODE": "DLA6",
     "VUNG_NAME": "Krông Ana"
   },
@@ -665,7 +665,7 @@
     "PROVINCE_CODE": "DLA",
     "DISTRICT_CODE": "EHL",
     "PROVINCE_NAME": "Đắk Lắk",
-    "DISTRICT_NAME": "Ea Hleo",
+    "DISTRICT_NAME": "Ea H'leo",
     "VUNG_CODE": "DLA3",
     "VUNG_NAME": "Ea Hleo"
   },
@@ -675,7 +675,7 @@
     "PROVINCE_CODE": "KON",
     "DISTRICT_CODE": "IHD",
     "PROVINCE_NAME": "Kon Tum",
-    "DISTRICT_NAME": "Ia H'Drai",
+    "DISTRICT_NAME": "Ia H' Drai",
     "VUNG_CODE": "KON6",
     "VUNG_NAME": "Sa Thầy - Ia H'Drai"
   }

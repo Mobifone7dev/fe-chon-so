@@ -5,6 +5,8 @@ import tinhData from "../../mock/tinh-tp/tinh_tp_cty7.json"; // Dữ liệu tỉ
 import Button from "react-bootstrap/Button";
 import dsHuyen from "../../mock/ds_huyen_ct7.json";
 
+import { set } from "date-fns";
+
 const API_URL = process.env.NEXTAUTH_APP_API_URL_SSL;
 const FormChooseNumber = (props) => {
   const [show, setShow] = useState(false);
@@ -16,6 +18,7 @@ const FormChooseNumber = (props) => {
   const [ip, setIp] = useState("");
   const [listShopCode, setListShopCode] = useState([]);
   const [error, setError] = useState(null);
+  const [districts, setDistricts] = useState([]);
 
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
@@ -24,9 +27,10 @@ const FormChooseNumber = (props) => {
       .catch((err) => console.error("Failed to fetch IP:", err));
   }, []);
 
-  const handleClose = () => {
+  const handleClose = (isReset) => {
+    resetForm();
     setShow(false);
-    props.handleClose();
+    props.handleClose(isReset);
   };
 
   useEffect(() => {
@@ -39,7 +43,6 @@ const FormChooseNumber = (props) => {
     });
   }, [props.selectedTelNumber, props.codeGS, props.show]);
 
-  const [districts, setDistricts] = useState([]);
   const [formData, setFormData] = useState({
     provinceCode: "",
     districtCode: "",
@@ -47,7 +50,7 @@ const FormChooseNumber = (props) => {
     fullName: "",
     personalID: "",
     fullAddress: "",
-    selectedTelNumber,
+    selectedTelNumber: "",
     codeGS: "",
   });
   // Hàm xử lý thay đổi tỉnh
@@ -62,18 +65,19 @@ const FormChooseNumber = (props) => {
           (item) => item.code === provinceCode
         );
         const provinceName = provinceData
-          ? provinceData.name_with_type
+          ? provinceData.name
           : "Tên tỉnh không có";
 
         setFormData({
           ...formData,
           provinceCode: provinceCode,
+          provinceName: provinceName,
           districtCode: "", // Reset quận
         });
 
         import(`../../mock/quan-huyen/${provinceCode}.json`)
           .then((module) => {
-            console.log("module.default", module.default);
+            // console.log("module.default", module.default);
             setDistricts(Object.values(module.default));
           })
           .catch((error) => {
@@ -95,15 +99,14 @@ const FormChooseNumber = (props) => {
     });
   };
   const handleDistrictChange = async (e) => {
-    console.log("e.target.value", e.target.value);
     const districtCode = e.target.value;
     const districtData = districts.find((item) => item.code === districtCode);
-    console.log("districtData", districtData);
+    // console.log("districtData", districtData);
 
     const filteredData = dsHuyen.filter((item) =>
       item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
     );
-    console.log("filteredData", filteredData);
+    // console.log("filteredData", filteredData);
     if (filteredData.length > 0) {
       const result = await fetch(
         API_URL +
@@ -120,23 +123,16 @@ const FormChooseNumber = (props) => {
       const data = await result.json();
       if (data && data.data.length > 0) {
         let tempArrActive = data.data
-          .filter(
-            (item) =>
-              item.SHOP_TYPE == "200" ||
-              item.SHOP_TYPE == "201" ||
-              item.SHOP_TYPE == "101"
-          )
+          .filter((item) => item.SHOP_TYPE == 200 || item.SHOP_TYPE == 101)
           .filter((item) => item.STATUS == 1);
         setListShopCode(tempArrActive);
-        setFormData({
-          ...formData,
-        });
       }
     }
 
     setFormData({
       ...formData,
       districtCode: districtCode,
+      districtName: districtData.name,
     });
   };
 
@@ -149,7 +145,7 @@ const FormChooseNumber = (props) => {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setLoading(true);
     const {
       selectedTelNumber,
@@ -160,6 +156,8 @@ const FormChooseNumber = (props) => {
       personalID,
       shopCode,
       fullName,
+      districtName,
+      provinceName,
     } = formData;
     if (
       selectedTelNumber.length == 0 ||
@@ -170,15 +168,41 @@ const FormChooseNumber = (props) => {
       personalID.length == 0 ||
       shopCode.length == 0
     ) {
+      // console.log(
+      //   selectedTelNumber,
+      //   codeGS,
+      //   provinceCode,
+      //   districtCode,
+      //   fullAddress,
+      //   personalID,
+      //   shopCode
+      // );
       setError("Vui lòng nhập đầy đủ thông tin");
       setLoading(false);
       return;
     }
+
+    if (fullName.trim().length < 3) {
+      setError("Tên phải có ít nhất 3 ký tự");
+      return;
+    }
+
+    if (fullAddress.trim().length < 10) {
+      setError("Vui lòng nhập địa chỉ cụ thể hơn");
+      return;
+    }
+    const huyenData = dsHuyen.filter((item) =>
+      item.DISTRICT_NAME.toLowerCase().includes(districtName.toLowerCase())
+    );
+    const tinhData = dsHuyen.filter((item) =>
+      item.PROVINCE_NAME.toLowerCase().includes(provinceName.toLowerCase())
+    );
+
     const postData = {
       in_hoten_kh: fullName,
       in_cccd_kh: personalID,
-      in_tinh_kh: provinceCode,
-      in_huyen_kh: districtCode,
+      in_tinh_kh: tinhData[0].PROVINCE_CODE,
+      in_huyen_kh: huyenData[0].DISTRICT_CODE,
       in_diachi_kh: fullAddress,
       in_ip: ip,
       in_shop_code: shopCode,
@@ -186,39 +210,42 @@ const FormChooseNumber = (props) => {
       in_isdn: selectedTelNumber,
     };
     try {
-      const result = fetch(API_URL + "/chon-so/insertChonSo", {
+      const result = await fetch(API_URL + "/chon-so/insertChonSo", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
         body: JSON.stringify(postData),
       });
-      if(result.status == 200){
+      if (result.status == 200) {
+        const data = await result.json();
+        // console.log("data", data);
         setLoading(false);
-        resetForm();
-        setError("Gửi thông tin thành công!");
-        handleClose();
+        if (data && data.code == 1) {
+          resetForm();
+          setError(data.message);
+          setTimeout(() => {
+            handleClose(true);
+          }, 1000);
+        } else {
+          setLoading(false);
+          setError(data.message);
+        }
       }
     } catch (error) {
       setLoading(false);
       console.log("error", error);
-      setError("Có lỗi xảy ra trong quá trình xử lý dữ liệu.");
+      setError(error.message);
     }
-
-    console.log("formData", formData);
-    setTimeout(() => {
-      setLoading(false);
-      resetForm();
-      handleClose();
-    }, 1000);
   };
   const resetForm = () => {
-    console.log("resetForm");
     setFormData({
       selectedTelNumber: "",
       codeGS: "",
       provinceCode: "",
       districtCode: "",
+      districtName: "",
+      provinceName: "",
       fullName: "",
       shopCode: "",
       personalID: "",
@@ -226,6 +253,7 @@ const FormChooseNumber = (props) => {
     });
     setError();
     setDistricts([]);
+    setLoading(false);
   };
 
   return (
@@ -235,7 +263,7 @@ const FormChooseNumber = (props) => {
       centered
       animation={false}
       show={show}
-      onHide={handleClose}
+      onHide={()=>handleClose(false)}
     >
       <Modal.Header closeButton>
         <Modal.Title>Form chọn số</Modal.Title>
@@ -391,7 +419,7 @@ const FormChooseNumber = (props) => {
       </Modal.Body>
       <Modal.Footer>
         <div className="mt-4 d-flex justify-content-around">
-          <Button className="me-4 " variant="secondary" onClick={handleClose}>
+          <Button className="me-4 " variant="secondary" onClick={()=>handleClose(false)}>
             Close
           </Button>
 

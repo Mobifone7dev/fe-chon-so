@@ -148,7 +148,18 @@ const NumberTable: React.FC = () => {
     setSelectedTelNumber(telNumber); // Cập nhật số điện thoại được chọn
     setShowPopup(true); // Hiện popup khi người dùng chọn số
   };
-  const resetData = () => {
+  const resetData = (isReset: boolean) => {
+    if (isReset) {
+      const copyData = [...data]; // Tạo một bản sao của mảng data
+      const updatedData = copyData.map((item) => {
+        if (item.TEL_NUMBER === selectedTelNumber) {
+          return { ...item, IS_HOLD: "1" }; // Cập nhật trường IS_HOLD thành "1"
+        }
+        return item; // Trả về item không thay đổi
+      });
+      setData(updatedData); // Cập nhật lại state data với dữ liệu đã thay đổi
+    }
+
     setShowPopup((prev) => !prev);
     setCodeGS(""); // Đặt lại mã GS
     setSelectedTelNumber(null); // Đặt lại số điện thoại được chọn
@@ -247,12 +258,18 @@ const NumberTable: React.FC = () => {
                           <td>{item.LOAI_CK}</td>
                           <td>
                             <div className="actions-container">
-                              <button
-                                className="choose-btn"
-                                onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
-                              >
-                                Chọn số
-                              </button>
+                              {
+                                item.IS_HOLD === "1" ? (
+                                  <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
+                                ) : (
+                                    <button
+                                      className="choose-btn"
+                                      onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
+                                    >
+                                      Chọn số
+                                  </button>)
+                              }
+
                             </div>
                           </td>
                         </tr>
