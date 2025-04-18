@@ -44,7 +44,7 @@ const NumberTable: React.FC = () => {
     setLoading(true);
 
     const startTime = new Date().toLocaleString(); // Thời gian bắt đầu tìm kiếm
-    console.log("Thời gian bắt đầu tìm kiếm:", startTime); // In ra thời gian bắt đầu
+    // console.log("Thời gian bắt đầu tìm kiếm:", startTime); // In ra thời gian bắt đầu
     try {
       // Thay dấu '*' thành '%' trong từ khóa trước khi gửi yêu cầu tới API
       let searchTermForAPI = term.replace(/\*/g, "%");
@@ -57,9 +57,9 @@ const NumberTable: React.FC = () => {
       const response = await axios.get(
         `${API_URL_TABLE}/chon-so/get-chon-so?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
       );
-      console.log("Dữ liệu trả về từ API:", response.data);
+      // console.log("Dữ liệu trả về từ API:", response.data);
       const resultTime = new Date().toLocaleString();
-      console.log("⏳ Thời gian kết quả trả về:", resultTime); // In ra thời gian khi có kết quả
+      // console.log("⏳ Thời gian kết quả trả về:", resultTime); // In ra thời gian khi có kết quả
 
       const result = response.data;
 
