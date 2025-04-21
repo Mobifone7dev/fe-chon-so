@@ -191,6 +191,11 @@ const FormChooseNumber = (props) => {
       setError("Vui lòng nhập địa chỉ cụ thể hơn");
       return;
     }
+
+    if(isValidID(personalID)==false){
+      setError("Số CCCD hoặc passport không hợp lệ");
+      return;
+    }
     const huyenData = dsHuyen.filter((item) =>
       item.DISTRICT_NAME.toLowerCase().includes(districtName.toLowerCase())
     );
@@ -238,6 +243,11 @@ const FormChooseNumber = (props) => {
       setError(error.message);
     }
   };
+  function isValidID(input) {
+    const cccdRegex = /^\d{12}$/;
+    const passportRegex =/^[a-zA-Z0-9]{6,9}$/;
+    return cccdRegex.test(input) || passportRegex.test(input);
+  }
   const resetForm = () => {
     setFormData({
       selectedTelNumber: "",

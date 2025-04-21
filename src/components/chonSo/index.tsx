@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.scss";
 const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
-import { useRouter } from "next/navigation"; // Dùng useRouter từ next/navigation
 import FormChooseNumber from "@components/modals/FormChooseNumber";
 import ReactLoading from 'react-loading';
 
