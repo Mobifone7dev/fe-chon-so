@@ -122,7 +122,7 @@ const FormChooseNumber = (props) => {
       const data = await result.json();
       if (data && data.data.length > 0) {
         let tempArrActive = data.data
-          .filter((item) => item.SHOP_TYPE == 200 || item.SHOP_TYPE == 101)
+          .filter((item) => item.SHOP_TYPE == 200 || item.SHOP_TYPE == 101|| item.SHOP_TYPE == 102|| item.SHOP_TYPE == 103)
           .filter((item) => item.STATUS == 1);
         setListShopCode(tempArrActive);
       }
@@ -363,7 +363,7 @@ const FormChooseNumber = (props) => {
                         key={shopCode.SHOP_CODE}
                         value={shopCode.SHOP_CODE}
                       >
-                        {shopCode.NAME}
+                       {shopCode.SHOP_CODE} - {shopCode.NAME}
                       </option>
                     ))
                   ) : (
