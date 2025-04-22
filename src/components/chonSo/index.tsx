@@ -132,18 +132,7 @@ const NumberTable: React.FC = () => {
     //   console.error("Lỗi khi gọi API chọn số:", err);
     //   alert("❌ Lỗi hệ thống");
     // }
-    const now = new Date();
 
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const hours = String(now.getHours()).padStart(2, '0');
-
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0'); // tháng bắt đầu từ 0
-    const year = now.getFullYear();
-
-    const formatted = `${seconds}${minutes}${hours}${day}${month}${year}`;
-    setCodeGS("GS" + formatted); // Cập nhật mã GS
     setSelectedTelNumber(telNumber); // Cập nhật số điện thoại được chọn
     setShowPopup(true); // Hiện popup khi người dùng chọn số
   };
@@ -160,7 +149,6 @@ const NumberTable: React.FC = () => {
     }
 
     setShowPopup((prev) => !prev);
-    setCodeGS(""); // Đặt lại mã GS
     setSelectedTelNumber(null); // Đặt lại số điện thoại được chọn
   }
   return (
@@ -281,7 +269,7 @@ const NumberTable: React.FC = () => {
           )}
         </>
       )}
-      <FormChooseNumber show={showPopup} handleClose={resetData} selectedTelNumber={selectedTelNumber} codeGS={codeGS} />
+      <FormChooseNumber show={showPopup} handleClose={resetData} selectedTelNumber={selectedTelNumber} />
     </div>
   );
 };

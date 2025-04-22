@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import tinhData from "../../mock/tinh-tp/tinh_tp_cty7.json"; // Dữ liệu tỉnh
 import Button from "react-bootstrap/Button";
 import dsHuyen from "../../mock/ds_huyen_ct7.json";
+import copy from 'copy-to-clipboard';
 
-import { set } from "date-fns";
 
 const API_URL = process.env.NEXTAUTH_APP_API_URL_SSL;
 const FormChooseNumber = (props) => {
@@ -14,11 +14,12 @@ const FormChooseNumber = (props) => {
   const [selectedTelNumber, setSelectedTelNumber] = useState(
     props.selectedTelNumber
   );
-  const [codeGS, setCodeGS] = useState(props.codeGS);
+  const [codeGS, setCodeGS] = useState();
   const [ip, setIp] = useState("");
   const [listShopCode, setListShopCode] = useState([]);
   const [error, setError] = useState(null);
   const [districts, setDistricts] = useState([]);
+  const [isHidenButtonSave, setIsHidenButtonSave] = useState(false);
 
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
@@ -39,9 +40,8 @@ const FormChooseNumber = (props) => {
     setFormData({
       ...formData,
       selectedTelNumber: props.selectedTelNumber,
-      codeGS: props.codeGS,
     });
-  }, [props.selectedTelNumber, props.codeGS, props.show]);
+  }, [props.selectedTelNumber, props.show]);
 
   const [formData, setFormData] = useState({
     provinceCode: "",
@@ -51,7 +51,6 @@ const FormChooseNumber = (props) => {
     personalID: "",
     fullAddress: "",
     selectedTelNumber: "",
-    codeGS: "",
   });
   // Hàm xử lý thay đổi tỉnh
   const handleProvinceChange = (e) => {
@@ -149,7 +148,6 @@ const FormChooseNumber = (props) => {
     setLoading(true);
     const {
       selectedTelNumber,
-      codeGS,
       provinceCode,
       districtCode,
       fullAddress,
@@ -161,7 +159,6 @@ const FormChooseNumber = (props) => {
     } = formData;
     if (
       selectedTelNumber.length == 0 ||
-      codeGS.length == 0 ||
       provinceCode.length == 0 ||
       districtCode.length == 0 ||
       fullAddress.length == 0 ||
@@ -192,7 +189,7 @@ const FormChooseNumber = (props) => {
       return;
     }
 
-    if(isValidID(personalID)==false){
+    if (isValidID(personalID) == false) {
       setError("Số CCCD hoặc passport không hợp lệ");
       return;
     }
@@ -211,7 +208,6 @@ const FormChooseNumber = (props) => {
       in_diachi_kh: fullAddress,
       in_ip: ip,
       in_shop_code: shopCode,
-      in_ma_gs: codeGS,
       in_isdn: selectedTelNumber,
     };
     try {
@@ -228,10 +224,12 @@ const FormChooseNumber = (props) => {
         setLoading(false);
         if (data && data.code == 1) {
           resetForm();
+          setCodeGS(data.codeGS);
           setError(data.message);
-          setTimeout(() => {
-            handleClose(true);
-          }, 1000);
+          setIsHidenButtonSave(true);
+          // setTimeout(() => {
+          //   handleClose(true);
+          // }, 1000);
         } else {
           setLoading(false);
           setError(data.message);
@@ -245,13 +243,12 @@ const FormChooseNumber = (props) => {
   };
   function isValidID(input) {
     const cccdRegex = /^\d{12}$/;
-    const passportRegex =/^[a-zA-Z0-9]{6,9}$/;
+    const passportRegex = /^[a-zA-Z0-9]{6,9}$/;
     return cccdRegex.test(input) || passportRegex.test(input);
   }
   const resetForm = () => {
     setFormData({
       selectedTelNumber: "",
-      codeGS: "",
       provinceCode: "",
       districtCode: "",
       districtName: "",
@@ -264,8 +261,14 @@ const FormChooseNumber = (props) => {
     setError();
     setDistricts([]);
     setLoading(false);
+    setCodeGS("");
+    setIsHidenButtonSave(false);
   };
 
+    const handleCopy = async () => {
+      copy(codeGS);
+
+    };
   return (
     <Modal
       size="xl"
@@ -273,7 +276,7 @@ const FormChooseNumber = (props) => {
       centered
       animation={false}
       show={show}
-      onHide={()=>handleClose(false)}
+      onHide={() => handleClose(false)}
     >
       <Modal.Header closeButton>
         <Modal.Title>Form chọn số</Modal.Title>
@@ -295,19 +298,6 @@ const FormChooseNumber = (props) => {
                     required
                     disabled={true}
                     className="form-control"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="codeGS">Mã giữ chỗ</label>
-                  <input
-                    type="text"
-                    id="codeGS"
-                    name="codeGS"
-                    value={formData.codeGS}
-                    onChange={handleChange}
-                    placeholder="Mã giữ chỗ"
-                    required
-                    disabled={true}
                   />
                 </div>
               </div>
@@ -424,18 +414,24 @@ const FormChooseNumber = (props) => {
                 {error && error.length > 0 ? error : ""}
               </span>
             </form>
+            <span onClick={handleCopy} style={{fontSize: "20px", color: "green", fontWeight: 500, fontStyle:"italic"}}>{codeGS&&codeGS.length > 0 ? codeGS : ""}</span>
           </div>
         </div>
       </Modal.Body>
       <Modal.Footer>
         <div className="mt-4 d-flex justify-content-around">
-          <Button className="me-4 " variant="secondary" onClick={()=>handleClose(false)}>
+          <Button
+            className="me-4 "
+            variant="secondary"
+            onClick={() => handleClose(false)}
+          >
             Close
           </Button>
-
-          <Button variant="primary" onClick={handleSubmit}>
-            {loading ? "Saving ..." : "Save"}
-          </Button>
+          {isHidenButtonSave ? null : (
+            <Button variant="primary" onClick={handleSubmit}>
+              {loading ? "Saving ..." : "Save"}
+            </Button>
+          )}
         </div>
       </Modal.Footer>
     </Modal>
