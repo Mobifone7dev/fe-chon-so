@@ -20,7 +20,12 @@ const FormChooseNumber = (props) => {
   const [error, setError] = useState(null);
   const [districts, setDistricts] = useState([]);
   const [isHidenButtonSave, setIsHidenButtonSave] = useState(false);
-
+  const [widthWindow, setWidthWindow] = useState(0);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidthWindow(window.innerWidth);
+    }
+  }, []);
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
       .then((res) => res.json())
@@ -271,7 +276,7 @@ const FormChooseNumber = (props) => {
     };
   return (
     <Modal
-      size="xl"
+      size={widthWindow > 768 ? "lg" : "sm"}
       aria-labelledby="contained-modal-title-vcenter"
       centered
       animation={false}
@@ -419,7 +424,7 @@ const FormChooseNumber = (props) => {
         </div>
       </Modal.Body>
       <Modal.Footer>
-        <div className="mt-4 d-flex justify-content-around">
+        <div className="mt-4 d-flex justify-content-start w-100">
           <Button
             className="me-4 "
             variant="secondary"
