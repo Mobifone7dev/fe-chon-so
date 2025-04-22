@@ -379,7 +379,7 @@ const FormChooseNumber = (props) => {
                   name="fullName"
                   value={formData.fullName}
                   onChange={handleChange}
-                  placeholder="Nhập tên của bạn"
+                  placeholder="Nhập tên khách hàng"
                   required
                 />
               </div>
