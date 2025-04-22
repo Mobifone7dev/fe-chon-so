@@ -279,7 +279,7 @@ const FormChooseNumber = (props) => {
       onHide={() => handleClose(false)}
     >
       <Modal.Header closeButton>
-        <Modal.Title>Form chọn số</Modal.Title>
+        <Modal.Title>Thông tin khách hàng</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <div className="form-selected-number">
@@ -372,7 +372,7 @@ const FormChooseNumber = (props) => {
                 </select>
               </div>
               <div className="form-group">
-                <label htmlFor="fullName">Tên đầy đủ:</label>
+                <label htmlFor="fullName">Tên khách hàng:</label>
                 <input
                   type="text"
                   id="fullName"
@@ -385,7 +385,7 @@ const FormChooseNumber = (props) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="personnalID">Số CCCD:</label>
+                <label htmlFor="personnalID">Số CCCD/Passport khách hàng:</label>
                 <input
                   type="text"
                   id="personalID"
@@ -397,7 +397,7 @@ const FormChooseNumber = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="fullAddress">Địa chỉ cụ thể của bạn:</label>
+                <label htmlFor="fullAddress">Địa chỉ cụ thể:</label>
                 <textarea
                   rows={3}
                   type="text-area"
