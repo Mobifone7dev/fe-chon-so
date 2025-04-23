@@ -276,7 +276,7 @@ const FormChooseNumber = (props) => {
     };
   return (
     <Modal
-      size={widthWindow > 768 ? "lg" : "sm"}
+      size={widthWindow > 768 ? "md" : "sm"}
       aria-labelledby="contained-modal-title-vcenter"
       centered
       animation={false}

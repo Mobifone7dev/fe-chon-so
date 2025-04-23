@@ -9,7 +9,7 @@ import ReactLoading from 'react-loading';
 interface NumberRecord {
   TEL_NUMBER: string;
   HLR_EXISTS: string;
-  SPE_NUMBER_TYPE: string;
+  SPE_NUMBER_TYPE: number;
   SHOP_CODE: string;
   LOAI_CK: string;
   NAME: string;
@@ -248,13 +248,18 @@ const NumberTable: React.FC = () => {
                               {
                                 item.IS_HOLD === "1" ? (
                                   <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
-                                ) : (
+                                ) :
+                                  item.SPE_NUMBER_TYPE > 7 ? (
                                     <button
                                       className="choose-btn"
                                       onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
                                     >
                                       Chọn số
-                                  </button>)
+                                    </button>
+                                  ) : (
+                                    null
+                                  )
+
                               }
 
                             </div>
