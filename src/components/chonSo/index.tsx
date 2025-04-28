@@ -10,7 +10,6 @@ interface NumberRecord {
   TEL_NUMBER: string;
   HLR_EXISTS: string;
   SPE_NUMBER_TYPE: number;
-  SHOP_CODE: string;
   LOAI_CK: string;
   NAME: string;
   CHANGE_DATETIME: string | null;
