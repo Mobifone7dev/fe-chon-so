@@ -1,11 +1,11 @@
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import tinhData from "../../mock/tinh-tp/tinh_tp_cty7.json"; // Dữ liệu tỉnh
 import Button from "react-bootstrap/Button";
 import dsHuyen from "../../mock/ds_huyen_ct7.json";
-import copy from 'copy-to-clipboard';
-
+import copy from "copy-to-clipboard";
+import { set } from "date-fns";
 
 const API_URL = process.env.NEXTAUTH_APP_API_URL_SSL;
 const FormChooseNumber = (props) => {
@@ -21,6 +21,12 @@ const FormChooseNumber = (props) => {
   const [districts, setDistricts] = useState([]);
   const [isHidenButtonSave, setIsHidenButtonSave] = useState(false);
   const [widthWindow, setWidthWindow] = useState(0);
+  const [file, setFile] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [message, setMessage] = useState("");
+  const fileInputRef = useRef(null);
+  const [filePath, setFilePath] = useState(null);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       setWidthWindow(window.innerWidth);
@@ -127,7 +133,13 @@ const FormChooseNumber = (props) => {
       const data = await result.json();
       if (data && data.data.length > 0) {
         let tempArrActive = data.data
-          .filter((item) => item.SHOP_TYPE == 200 || item.SHOP_TYPE == 101|| item.SHOP_TYPE == 102|| item.SHOP_TYPE == 103)
+          .filter(
+            (item) =>
+              item.SHOP_TYPE == 200 ||
+              item.SHOP_TYPE == 101 ||
+              item.SHOP_TYPE == 102 ||
+              item.SHOP_TYPE == 103
+          )
           .filter((item) => item.STATUS == 1);
         setListShopCode(tempArrActive);
       }
@@ -150,7 +162,6 @@ const FormChooseNumber = (props) => {
   };
 
   const handleSubmit = async () => {
-    setLoading(true);
     const {
       selectedTelNumber,
       provinceCode,
@@ -205,7 +216,7 @@ const FormChooseNumber = (props) => {
       item.PROVINCE_NAME.toLowerCase().includes(provinceName.toLowerCase())
     );
 
-    const postData = {
+    let postData = {
       in_hoten_kh: fullName,
       in_cccd_kh: personalID,
       in_tinh_kh: tinhData[0].PROVINCE_CODE,
@@ -215,6 +226,38 @@ const FormChooseNumber = (props) => {
       in_shop_code: shopCode,
       in_isdn: selectedTelNumber,
     };
+
+    if (file && file.size > 2000 * 1024) return;
+
+    setLoading(true);
+    if (file) {
+      const formData = new FormData();
+      formData.append("file", file);
+      setUploading(true);
+      setMessage("Đang tải lên tờ trình phê duyệt hạ cam kết...");
+      try {
+        const response = await fetch(API_URL + "/chon-so/upload-file", {
+          method: "POST",
+          body: formData,
+        });
+        setMessage("");
+        setUploading(false);
+        if (response.status === 200) {
+          const data = await response.json();
+          postData = {
+            ...postData,
+            in_link_phieu: data.filePath ? data.filePath : null,
+            in_is_ha_ck: 1,
+          };
+          console.log("data", data);
+        }
+      } catch (error) {
+        console.error("Error uploading file:", error);
+        setLoading(false);
+        setMessage("Tải lên tờ trình phê duyệt hạ cam kết thất bại");
+        return;
+      }
+    }
     try {
       const result = await fetch(API_URL + "/chon-so/insertChonSo", {
         method: "POST",
@@ -268,12 +311,31 @@ const FormChooseNumber = (props) => {
     setLoading(false);
     setCodeGS("");
     setIsHidenButtonSave(false);
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
   };
 
-    const handleCopy = async () => {
-      copy(codeGS);
+  const handleCopy = async () => {
+    copy(codeGS);
+  };
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+    if (e.target.files[0] > 2000 * 1024) {
+      alert("File phải nhỏ hơn 2000KB");
+      return;
+    }
+  };
 
-    };
+  const handleClearFile = () => {
+    setFile(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
   return (
     <Modal
       size={widthWindow > 768 ? "md" : "sm"}
@@ -368,7 +430,7 @@ const FormChooseNumber = (props) => {
                         key={shopCode.SHOP_CODE}
                         value={shopCode.SHOP_CODE}
                       >
-                       {shopCode.SHOP_CODE} - {shopCode.NAME}
+                        {shopCode.SHOP_CODE} - {shopCode.NAME}
                       </option>
                     ))
                   ) : (
@@ -390,7 +452,9 @@ const FormChooseNumber = (props) => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="personnalID">Số CCCD/Passport khách hàng:</label>
+                <label htmlFor="personnalID">
+                  Số CCCD/Passport khách hàng:
+                </label>
                 <input
                   type="text"
                   id="personalID"
@@ -415,11 +479,44 @@ const FormChooseNumber = (props) => {
                   className="form-control"
                 />
               </div>
+              <div className="max-w-md mx-auto p-6 space-y-4">
+                <label className="">
+                  Tờ trình phê duyệt hạ cam kết(nếu có):
+                </label>
+                <input
+                  type="file"
+                  accept=".pdf,.doc,.docx"
+                  onChange={handleFileChange}
+                  ref={fileInputRef}
+                />
+                {message && <p>{message}</p>}
+                {file && (
+                  <div className="text-sm">
+                    📄 {file.name} ({(file.size / 1024).toFixed(1)} KB)
+                    <button
+                      onClick={handleClearFile}
+                      className="ml-2 text-red-500 underline"
+                    >
+                      Xóa
+                    </button>
+                  </div>
+                )}
+              </div>
               <span style={{ color: "red" }}>
                 {error && error.length > 0 ? error : ""}
               </span>
             </form>
-            <span onClick={handleCopy} style={{fontSize: "20px", color: "green", fontWeight: 500, fontStyle:"italic"}}>{codeGS&&codeGS.length > 0 ? codeGS : ""}</span>
+            <span
+              onClick={handleCopy}
+              style={{
+                fontSize: "20px",
+                color: "green",
+                fontWeight: 500,
+                fontStyle: "italic",
+              }}
+            >
+              {codeGS && codeGS.length > 0 ? codeGS : ""}
+            </span>
           </div>
         </div>
       </Modal.Body>
