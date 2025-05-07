@@ -248,7 +248,7 @@ const NumberTable: React.FC = () => {
                                 item.IS_HOLD === "1" ? (
                                   <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
                                 ) :
-                                  item.SPE_NUMBER_TYPE > 7 ? (
+                                  item.SPE_NUMBER_TYPE > 6 ? (
                                     <button
                                       className="choose-btn"
                                       onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
