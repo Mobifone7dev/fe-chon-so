@@ -68,6 +68,7 @@ const NumberTable: React.FC = () => {
         setData([]); // Nếu không có dữ liệu, đặt lại mảng trống
       }
     } catch (error) {
+      alert("❌ Có lỗi xảy ra khi tìm kiếm số. Bạn email về  c7.hotrocapso@mobine.vn để được hỗ trợ nhé"); // Thông báo lỗi nếu có
       console.error("Error fetching data:", error); // Xử lý lỗi khi gọi API
     } finally {
       setLoading(false); // Đặt lại trạng thái loading

@@ -111,12 +111,12 @@ const FormChooseNumber = (props) => {
   const handleDistrictChange = async (e) => {
     const districtCode = e.target.value;
     const districtData = districts.find((item) => item.code === districtCode);
-    // console.log("districtData", districtData);
+   console.log("districtData", districtData);
 
     const filteredData = dsHuyen.filter((item) =>
       item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
     );
-    // console.log("filteredData", filteredData);
+    console.log("filteredData", filteredData);
     if (filteredData.length > 0) {
       const result = await fetch(
         API_URL +
@@ -131,7 +131,7 @@ const FormChooseNumber = (props) => {
       );
 
       const data = await result.json();
-      if (data && data.data.length > 0) {
+      if (data && data.data&&data.data.length > 0) {
         let tempArrActive = data.data
           .filter(
             (item) =>
