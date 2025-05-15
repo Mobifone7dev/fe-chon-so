@@ -208,9 +208,9 @@ const NumberTable: React.FC = () => {
         <button
           className="search-button"
           onClick={handleSearchClick}
-          disabled={!!warning} // Vô hiệu hóa nút khi có cảnh báo
+          disabled={loading} // Vô hiệu hóa nút khi có cảnh báo
         >
-          Tìm kiếm
+          {loading ? "Đang Tìm kiếm ...." : 'Tìm kiếm'}
         </button>{" "}
         {/* Nút tìm kiếm */}
         {warning && <p className="warning-message">{warning}</p>}{" "}
