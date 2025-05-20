@@ -137,12 +137,15 @@ const NumberTable: React.FC = () => {
   const resetData = (isReset: boolean) => {
     if (isReset) {
       const copyData = [...data]; // Tạo một bản sao của mảng data
+      console.log("Dữ liệu trước khi cập nhật:", copyData); // In ra dữ liệu trước khi cập nhật
+      console.log("Số điện thoại được chọn:", selectedTelNumber); // In ra số điện thoại được chọn
       const updatedData = copyData.map((item) => {
         if (item.tel_number_key == selectedTelNumber) {
           return { ...item, is_hold: "1" }; // Cập nhật trường IS_HOLD thành "1"
         }
         return item; // Trả về item không thay đổi
       });
+      console
       setData(updatedData); // Cập nhật lại state data với dữ liệu đã thay đổi
     }
 
