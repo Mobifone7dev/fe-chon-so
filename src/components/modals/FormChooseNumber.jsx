@@ -32,6 +32,7 @@ const FormChooseNumber = (props) => {
       setWidthWindow(window.innerWidth);
     }
   }, []);
+
   useEffect(() => {
     fetch("https://api.ipify.org?format=json")
       .then((res) => res.json())
@@ -281,12 +282,15 @@ const FormChooseNumber = (props) => {
               newValue: "1",
             }),
           });
-           setLoading(false);
+          setLoading(false);
           if (result.status == 200) {
+            console.log("truoc khi reset data");
+            props.handleClose(true);
+            console.log("sau khi reset data");
+
             resetForm();
             setCodeGS(data.codeGS);
             setError(data.message);
-            props.handleClose(true);
             setIsHidenButtonSave(true);
           } else {
             setLoading(false);
