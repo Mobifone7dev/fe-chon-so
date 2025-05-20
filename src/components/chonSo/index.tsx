@@ -138,7 +138,7 @@ const NumberTable: React.FC = () => {
     if (isReset) {
       const copyData = [...data]; // Tạo một bản sao của mảng data
       const updatedData = copyData.map((item) => {
-        if (item.tel_number_key === selectedTelNumber) {
+        if (item.tel_number_key == selectedTelNumber) {
           return { ...item, is_hold: "1" }; // Cập nhật trường IS_HOLD thành "1"
         }
         return item; // Trả về item không thay đổi
