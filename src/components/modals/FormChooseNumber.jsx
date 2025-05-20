@@ -260,45 +260,45 @@ const FormChooseNumber = (props) => {
     }
 
     try {
-      const result = await fetch(API_URL + "/chon-so/update-is-hold", {
+      const result = await fetch(API_URL + "/chon-so/insertChonSo", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({
-          telNumberKey: selectedTelNumber,
-          newValue: "1",
-        }),
+        body: JSON.stringify(postData),
       });
       if (result.status == 200) {
-        const result = await fetch(API_URL + "/chon-so/insertChonSo", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify(postData),
-        });
-        if (result.status == 200) {
-          const data = await result.json();
-          // console.log("data", data);
-          setLoading(false);
-          if (data && data.code == 1) {
+        const data = await result.json();
+        // console.log("data", data);
+        if (data && data.code == 1) {
+          const result = await fetch(API_URL + "/chon-so/update-is-hold", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+              telNumberKey: selectedTelNumber,
+              newValue: "1",
+            }),
+          });
+           setLoading(false);
+          if (result.status == 200) {
             resetForm();
             setCodeGS(data.codeGS);
             setError(data.message);
             setIsHidenButtonSave(true);
           } else {
             setLoading(false);
-            setError(data.message);
+            setError("Cập nhật trạng thái giữ số thất bại");
+            return;
           }
         } else {
           setLoading(false);
           setError(data.message);
-          return;
         }
-      }else {
+      } else {
         setLoading(false);
-        setError("Không thể giữ số thuê bao này, vui lòng thử lại sau");
+        setError(data.message);
         return;
       }
     } catch (error) {
