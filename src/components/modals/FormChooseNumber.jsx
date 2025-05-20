@@ -286,6 +286,7 @@ const FormChooseNumber = (props) => {
             resetForm();
             setCodeGS(data.codeGS);
             setError(data.message);
+            props.handleClose(true);
             setIsHidenButtonSave(true);
           } else {
             setLoading(false);
