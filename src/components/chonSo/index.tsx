@@ -7,13 +7,11 @@ import FormChooseNumber from "@components/modals/FormChooseNumber";
 import ReactLoading from 'react-loading';
 
 interface NumberRecord {
-  TEL_NUMBER: string;
-  HLR_EXISTS: string;
-  SPE_NUMBER_TYPE: number;
-  LOAI_CK: string;
-  NAME: string;
-  CHANGE_DATETIME: string | null;
-  IS_HOLD: string | null;
+  tel_number_key: string;
+  spe_number_type: number;
+  change_datetime: string | null;
+  loai_ck: string | null;
+  is_hold: string | null;
 }
 
 const NumberTable: React.FC = () => {
@@ -23,7 +21,6 @@ const NumberTable: React.FC = () => {
   const [warning, setWarning] = useState<string>(""); // Cảnh báo nhập liệu
   const [type, setType] = useState<string>(""); // Lưu giá trị type
   const [shopCodeInput, setShopCodeInput] = useState<string>("");
-  const [totalCount, setTotalCount] = useState<number>(0); // Tổng số bản ghi
   const limit = 100; // Số dòng trên mỗi trang (cập nhật thành 100)
   const [showTooltip, setShowTooltip] = useState(false); // State điều khiển tooltip
   const [ip, setIp] = useState('');
@@ -45,25 +42,26 @@ const NumberTable: React.FC = () => {
     // console.log("Thời gian bắt đầu tìm kiếm:", startTime); // In ra thời gian bắt đầu
     try {
       // Thay dấu '*' thành '%' trong từ khóa trước khi gửi yêu cầu tới API
-      let searchTermForAPI = term.replace(/\*/g, "%");
+      let searchTermForAPI = '';
 
       // Sử dụng encodeURIComponent để đảm bảo các ký tự đặc biệt không gây lỗi trong URL
-      searchTermForAPI = encodeURIComponent(searchTermForAPI);
+      searchTermForAPI = encodeURIComponent(term);
       const shopCodeForAPI = encodeURIComponent(shopCodeInput); // Encode shopCodeInput
 
       // Gửi yêu cầu tới API
       const response = await axios.get(
-        `${API_URL_TABLE}/chon-so/get-chon-so?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
+        `${API_URL_TABLE}/chon-so/search-condition?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
       );
       // console.log("Dữ liệu trả về từ API:", response.data);
       const resultTime = new Date().toLocaleString();
       // console.log("⏳ Thời gian kết quả trả về:", resultTime); // In ra thời gian khi có kết quả
 
-      const result = response.data;
-
-      if (result && Array.isArray(result.result)) {
-        setData(result.result); // Cập nhật dữ liệu từ API
-        setTotalCount(result.totalCount || 0); // Cập nhật tổng số bản ghi
+      const result = response.data.result; // Lấy dữ liệu từ phản hồi
+      console.log("Kết quả tìm kiếm:", result); // In ra kết quả tìm kiếm
+      if (result && Array.isArray(result)) {
+        const filteredResult = result.map((item: any) => item._source); // Lọc các số điện thoại không hợp lệ
+        console.log("Kết quả tìm kiếm sau khi lọc:", filteredResult); // In ra kết quả sau khi lọc
+        setData(filteredResult); // Cập nhật dữ liệu từ API
       } else {
         setData([]); // Nếu không có dữ liệu, đặt lại mảng trống
       }
@@ -140,8 +138,8 @@ const NumberTable: React.FC = () => {
     if (isReset) {
       const copyData = [...data]; // Tạo một bản sao của mảng data
       const updatedData = copyData.map((item) => {
-        if (item.TEL_NUMBER === selectedTelNumber) {
-          return { ...item, IS_HOLD: "1" }; // Cập nhật trường IS_HOLD thành "1"
+        if (item.tel_number_key === selectedTelNumber) {
+          return { ...item, is_hold: "1" }; // Cập nhật trường IS_HOLD thành "1"
         }
         return item; // Trả về item không thay đổi
       });
@@ -240,19 +238,19 @@ const NumberTable: React.FC = () => {
                     </thead>
                     <tbody>
                       {data.map((item) => (
-                        <tr key={item.TEL_NUMBER}>
-                          <td>{item.TEL_NUMBER}</td>
-                          <td>{item.LOAI_CK}</td>
+                        <tr key={item.tel_number_key}>
+                          <td>{item.tel_number_key}</td>
+                          <td>{item.loai_ck}</td>
                           <td>
                             <div className="actions-container">
                               {
-                                item.IS_HOLD === "1" ? (
+                                item.is_hold === "1" ? (
                                   <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
                                 ) :
-                                  item.SPE_NUMBER_TYPE > 6 ? (
+                                  item.spe_number_type > 6 ? (
                                     <button
                                       className="choose-btn"
-                                      onClick={() => handleChooseTelNumber(item.TEL_NUMBER)}
+                                      onClick={() => handleChooseTelNumber(item.tel_number_key)}
                                     >
                                       Chọn số
                                     </button>

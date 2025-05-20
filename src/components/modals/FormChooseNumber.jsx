@@ -111,7 +111,7 @@ const FormChooseNumber = (props) => {
   const handleDistrictChange = async (e) => {
     const districtCode = e.target.value;
     const districtData = districts.find((item) => item.code === districtCode);
-   console.log("districtData", districtData);
+    console.log("districtData", districtData);
 
     const filteredData = dsHuyen.filter((item) =>
       item.DISTRICT_NAME.toLowerCase().includes(districtData.name.toLowerCase())
@@ -131,7 +131,7 @@ const FormChooseNumber = (props) => {
       );
 
       const data = await result.json();
-      if (data && data.data&&data.data.length > 0) {
+      if (data && data.data && data.data.length > 0) {
         let tempArrActive = data.data
           .filter(
             (item) =>
@@ -258,35 +258,54 @@ const FormChooseNumber = (props) => {
         return;
       }
     }
+
     try {
-      const result = await fetch(API_URL + "/chon-so/insertChonSo", {
+      const result = await fetch(API_URL + "/chon-so/update-is-hold", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify(postData),
+        body: JSON.stringify({
+          telNumberKey: selectedTelNumber,
+          newValue: "1",
+        }),
       });
       if (result.status == 200) {
-        const data = await result.json();
-        // console.log("data", data);
-        setLoading(false);
-        if (data && data.code == 1) {
-          resetForm();
-          setCodeGS(data.codeGS);
-          setError(data.message);
-          setIsHidenButtonSave(true);
-          // setTimeout(() => {
-          //   handleClose(true);
-          // }, 1000);
+        const result = await fetch(API_URL + "/chon-so/insertChonSo", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(postData),
+        });
+        if (result.status == 200) {
+          const data = await result.json();
+          // console.log("data", data);
+          setLoading(false);
+          if (data && data.code == 1) {
+            resetForm();
+            setCodeGS(data.codeGS);
+            setError(data.message);
+            setIsHidenButtonSave(true);
+          } else {
+            setLoading(false);
+            setError(data.message);
+          }
         } else {
           setLoading(false);
           setError(data.message);
+          return;
         }
+      }else {
+        setLoading(false);
+        setError("Không thể giữ số thuê bao này, vui lòng thử lại sau");
+        return;
       }
     } catch (error) {
       setLoading(false);
       console.log("error", error);
       setError(error.message);
+      return;
     }
   };
   function isValidID(input) {
