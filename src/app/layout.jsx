@@ -1,11 +1,26 @@
 /* eslint-disable @next/next/no-sync-scripts */
+'use client';
 import "../styles/global.scss";
-import React, { Suspense } from "react";
+import React, { Suspense,useEffect } from "react";
 import "react-modern-drawer/dist/index.css";
 import Layout from "../components/layout/Layout";
 process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
 
-const RootLayout = async ({ children }) => {
+const RootLayout = ({ children }) => {
+
+  useEffect(() => {
+    const handler = (event) => {
+      const err = event 
+      if (err?.message?.includes('Loading chunk')) {
+        console.warn('ChunkLoadError detected, reloading...')
+        window.location.reload()
+      }
+    }
+
+    window.addEventListener('error', handler)
+    return () => window.removeEventListener('error', handler)
+  }, [])
+
   return (
     <html lang="en" suppressHydrationWarning>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
