@@ -26,11 +26,10 @@ const Footer: FC = () => {
               <div className="info-footer">
                 <span style={{ textAlign: "center", color: "white" }}>Ip máy của bạn là: {ip}</span>
                 <div className="logo-footer">
-                  <Image
+                  <img
                     src="/imgs/logo-mbf.png"
                     alt="logo"
-                    width="150"
-                    height="40"
+                    style={{ width: "150px", height: "auto" }} // ✅ Giữ đúng tỉ lệ
                   />
                 </div>
                 <h3>Tổng công ty Viễn Thông MobiFone</h3>

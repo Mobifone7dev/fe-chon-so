@@ -57,10 +57,10 @@ const NumberTable: React.FC = () => {
       // console.log("⏳ Thời gian kết quả trả về:", resultTime); // In ra thời gian khi có kết quả
 
       const result = response.data.result; // Lấy dữ liệu từ phản hồi
-      console.log("Kết quả tìm kiếm:", result); // In ra kết quả tìm kiếm
+      // console.log("Kết quả tìm kiếm:", result); // In ra kết quả tìm kiếm
       if (result && Array.isArray(result)) {
         const filteredResult = result.map((item: any) => item._source); // Lọc các số điện thoại không hợp lệ
-        console.log("Kết quả tìm kiếm sau khi lọc:", filteredResult); // In ra kết quả sau khi lọc
+        // console.log("Kết quả tìm kiếm sau khi lọc:", filteredResult); // In ra kết quả sau khi lọc
         setData(filteredResult); // Cập nhật dữ liệu từ API
       } else {
         setData([]); // Nếu không có dữ liệu, đặt lại mảng trống
