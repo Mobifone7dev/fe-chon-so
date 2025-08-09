@@ -150,132 +150,132 @@ const NumberTable: React.FC = () => {
     setSelectedTelNumber(null); // Đặt lại số điện thoại được chọn
   }
   return (
-    <p className="text-center text-danger mt-5 text-bold">Hệ thống đang bảo trì. Bạn email về c7.hotrocapso@mobifone.vn để được hướng dẫn!</p>
-    // <div className="table-container">
-    //   <h1 style={{ textAlign: "left" }}>Tra Cứu Kho Số</h1>
-    //   <div className="search-container">
-    //     <div style={{ position: "relative" }}>
-    //       {/* input và tooltip ở đây */}
-    //       <input
-    //         type="text"
-    //         value={searchTerm}
-    //         onChange={handleSearch} // Cập nhật từ khóa khi người dùng nhập
-    //         placeholder="Tìm kiếm số điện thoại"
-    //         className="search-input" // Thêm class cho input
-    //         onFocus={() => setShowTooltip(true)} // Hiện tooltip khi focus
-    //         onBlur={() => setShowTooltip(false)} // Ẩn tooltip khi blur
-    //       />
-    //       {showTooltip && (
-    //         <div className="tooltip-text">
-    //           <strong>Hướng dẫn tìm kiếm:</strong>
-    //           <br />
-    //           Để tìm số bắt đầu bằng 88: <code>88*</code>
-    //           <br />
-    //           Để tìm số kết thúc bằng 88: <code>*88</code>
-    //           <br />
-    //           Để tìm số bắt đầu bằng 88 và kết thúc bằng 99: <code>88*99</code>
-    //           <br />
-    //           Để tìm số có chứa 88: <code>*88*</code>
-    //           <br />
-    //           Để tìm số có chứa 88 và 99: <code>*88*99*</code>
-    //         </div>
-    //       )}
-    //     </div>
-    //     {/* <input
-    //       type="text"
-    //       value={shopCodeInput}
-    //       onChange={handleShopCode} // Cập nhật từ khóa khi người dùng nhập
-    //       placeholder="Tìm kiếm kho số"
-    //       className="search-input" // Thêm class cho input
-    //     /> */}
-    //     <select
-    //       className="search-select"
-    //       value={type}
-    //       onChange={handleTypeChange} // Gọi hàm handleTypeChange khi thay đổi
-    //     >
-    //       <option value="">Tất cả</option>
-    //       <option value="1">CK1500 Giá 1,500,000 đ</option>
-    //       <option value="2">CK1200 Giá 1,200,000 đ</option>
-    //       <option value="3">CK1000 Giá 1,000,000 đ</option>
-    //       <option value="4">CK800 Giá 800,000 đ</option>
-    //       <option value="5">CK500 Giá 500,000 đ</option>
-    //       <option value="6">CK400 Giá 400,000 đ</option>
-    //       <option value="7">CK300 Giá 300,000 đ</option>
-    //       <option value="8">CK250 Giá 250,000 đ</option>
-    //       <option value="9">CK150 Giá 150,000 đ</option>
-    //       <option value="10">Tự Do</option>
-    //     </select>
-    //     <button
-    //       className="search-button"
-    //       onClick={handleSearchClick}
-    //       disabled={true} // Vô hiệu hóa nút khi có cảnh báo
+    // <p className="text-center text-danger mt-5 text-bold">Hệ thống đang bảo trì. Bạn email về c7.hotrocapso@mobifone.vn để được hướng dẫn!</p>
+    <div className="table-container">
+      <h1 style={{ textAlign: "left" }}>Tra Cứu Kho Số</h1>
+      <div className="search-container">
+        <div style={{ position: "relative" }}>
+          {/* input và tooltip ở đây */}
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearch} // Cập nhật từ khóa khi người dùng nhập
+            placeholder="Tìm kiếm số điện thoại"
+            className="search-input" // Thêm class cho input
+            onFocus={() => setShowTooltip(true)} // Hiện tooltip khi focus
+            onBlur={() => setShowTooltip(false)} // Ẩn tooltip khi blur
+          />
+          {showTooltip && (
+            <div className="tooltip-text">
+              <strong>Hướng dẫn tìm kiếm:</strong>
+              <br />
+              Để tìm số bắt đầu bằng 88: <code>88*</code>
+              <br />
+              Để tìm số kết thúc bằng 88: <code>*88</code>
+              <br />
+              Để tìm số bắt đầu bằng 88 và kết thúc bằng 99: <code>88*99</code>
+              <br />
+              Để tìm số có chứa 88: <code>*88*</code>
+              <br />
+              Để tìm số có chứa 88 và 99: <code>*88*99*</code>
+            </div>
+          )}
+        </div>
+        {/* <input
+          type="text"
+          value={shopCodeInput}
+          onChange={handleShopCode} // Cập nhật từ khóa khi người dùng nhập
+          placeholder="Tìm kiếm kho số"
+          className="search-input" // Thêm class cho input
+        /> */}
+        <select
+          className="search-select"
+          value={type}
+          onChange={handleTypeChange} // Gọi hàm handleTypeChange khi thay đổi
+        >
+          <option value="">Tất cả</option>
+          <option value="1">CK1500 Giá 1,500,000 đ</option>
+          <option value="2">CK1200 Giá 1,200,000 đ</option>
+          <option value="3">CK1000 Giá 1,000,000 đ</option>
+          <option value="4">CK800 Giá 800,000 đ</option>
+          <option value="5">CK500 Giá 500,000 đ</option>
+          <option value="6">CK400 Giá 400,000 đ</option>
+          <option value="7">CK300 Giá 300,000 đ</option>
+          <option value="8">CK250 Giá 250,000 đ</option>
+          <option value="9">CK150 Giá 150,000 đ</option>
+          <option value="10">Tự Do</option>
+        </select>
+        <button
+          className="search-button"
+          onClick={handleSearchClick}
+          disabled={loading} // Vô hiệu hóa nút khi có cảnh báo
         
-    //     >
-    //       {loading ? "Đang Tìm kiếm ...." : 'Tìm kiếm'}
-    //     </button>{" "}
-    //     {/* Nút tìm kiếm */}
-    //     {warning && <p className="warning-message">{warning}</p>}{" "}
-    //     {/* Hiển thị cảnh báo */}
-    //   </div>
-    //   {loading ? (
-    //     <div className="d-flex justify-center align-items-start flex-column" >
-    //       <p>Bạn đợi chút nhé!</p>
-    //       <ReactLoading type={'balls'} color={"#00e673"} height={67} width={40} />
+        >
+          {loading ? "Đang Tìm kiếm ...." : 'Tìm kiếm'}
+        </button>{" "}
+        {/* Nút tìm kiếm */}
+        {warning && <p className="warning-message">{warning}</p>}{" "}
+        {/* Hiển thị cảnh báo */}
+      </div>
+      {loading ? (
+        <div className="d-flex justify-center align-items-start flex-column" >
+          <p>Bạn đợi chút nhé!</p>
+          <ReactLoading type={'balls'} color={"#00e673"} height={67} width={40} />
 
-    //     </div>
+        </div>
 
-    //   ) : (
-    //     <>
-    //       {data.length === 0 ? (
-    //         <p>No phone numbers found.</p>
-    //       ) : (
-    //             <div className="table-responsive" style={{ maxWidth: 610 }}>
-    //               <table className=" table table table-row-dashed table-striped  table-row-gray-300 align-middle gs-0 gy-3">
-    //                 <thead>
-    //                   <tr>
-    //                     <th>Số Thuê Bao</th>
-    //                     <th>Loại Cam Kết</th>
-    //                     <th>Actions</th>
-    //                   </tr>
-    //                 </thead>
-    //                 <tbody>
-    //                   {data.map((item) => (
-    //                     <tr key={item.tel_number_key}>
-    //                       <td>{item.tel_number_key}</td>
-    //                       <td>{item.loai_ck}</td>
-    //                       <td>
-    //                         <div className="actions-container">
-    //                           {
-    //                             item.is_hold === "1" ? (
-    //                               <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
-    //                             ) :
-    //                               item.spe_number_type > 6 ? (
-    //                                 <button
-    //                                   className="choose-btn"
-    //                                   onClick={() => handleChooseTelNumber(item.tel_number_key)}
-    //                                 >
-    //                                   Chọn số
-    //                                 </button>
-    //                               ) : (
-    //                                 null
-    //                               )
+      ) : (
+        <>
+          {data.length === 0 ? (
+            <p>No phone numbers found.</p>
+          ) : (
+            <div className="table-responsive" style={{ maxWidth: 610 }}>
+              <table className=" table table table-row-dashed table-striped  table-row-gray-300 align-middle gs-0 gy-3">
+                <thead>
+                  <tr>
+                    <th>Số Thuê Bao</th>
+                    <th>Loại Cam Kết</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((item) => (
+                    <tr key={item.tel_number_key}>
+                      <td>{item.tel_number_key}</td>
+                      <td>{item.loai_ck}</td>
+                      <td>
+                        <div className="actions-container">
+                          {
+                            item.is_hold === "1" ? (
+                              <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
+                            ) :
+                              item.spe_number_type > 6 ? (
+                                <button
+                                  className="choose-btn"
+                                  onClick={() => handleChooseTelNumber(item.tel_number_key)}
+                                >
+                                  Chọn số
+                                </button>
+                              ) : (
+                                null
+                              )
 
-    //                           }
+                              }
 
-    //                         </div>
-    //                       </td>
-    //                     </tr>
-    //                   ))}
-    //                 </tbody>
-    //               </table>
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
 
-    //             </div>
+                </div>
 
-    //       )}
-    //     </>
-    //   )}
-    //   <FormChooseNumber show={showPopup} handleClose={resetData} selectedTelNumber={selectedTelNumber} />
-    // </div>
+          )}
+        </>
+      )}
+      <FormChooseNumber show={showPopup} handleClose={resetData} selectedTelNumber={selectedTelNumber} />
+    </div>
   );
 };
 
