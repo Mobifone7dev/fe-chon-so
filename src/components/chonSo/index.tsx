@@ -242,10 +242,10 @@ const NumberTable: React.FC = () => {
                   {data.map((item) => (
                     <tr key={item.tel_number_key}>
                       <td>{item.tel_number_key}</td>
-                      <td>{item.loai_ck}</td>
+                      <td>KXD {/*item.loai_ck*/}</td>
                       <td>
                         <div className="actions-container">
-                          {
+                          { /*
                             item.is_hold === "1" ? (
                               <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
                             ) :
@@ -259,11 +259,11 @@ const NumberTable: React.FC = () => {
                               ) : (
                                 null
                               )
-
+                              */
                               }
 
                             </div>
-                          </td>
+                      </td>
                         </tr>
                       ))}
                     </tbody>
