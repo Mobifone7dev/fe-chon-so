@@ -189,7 +189,7 @@ const NumberTable: React.FC = () => {
           className="search-input" // Thêm class cho input
         /> */}
         <select
-          className="search-select" style="display:none"
+          className="search-select" style={{ display: "none" }}
           value={type}
           onChange={handleTypeChange} // Gọi hàm handleTypeChange khi thay đổi
         >
