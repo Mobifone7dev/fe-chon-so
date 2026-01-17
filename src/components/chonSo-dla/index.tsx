@@ -13,7 +13,7 @@ interface NumberRecord {
   is_hold: string | null;
 }
 
-const NumberTable: React.FC = () => {
+const NumberTableDLA: React.FC = () => {
   const [data, setData] = useState<NumberRecord[]>([]); // Dữ liệu số điện thoại
   const [loading, setLoading] = useState<boolean>(false); // Trạng thái loading
   const [searchTerm, setSearchTerm] = useState<string>(""); // Từ khóa tìm kiếm
@@ -278,4 +278,4 @@ const NumberTable: React.FC = () => {
   );
 };
 
-export default NumberTable;
+export default NumberTableDLA;

@@ -71,7 +71,7 @@ const HeaderApp: FC<HeaderProps> = ({ toggleMenu, isOpen }) => {
                 <img src={`/imgs/logo-primary.png`} alt="logo" />
               </Link>
             </div>
-            <div className="main-title">Khánh Hòa</div>
+            {/* <div className="main-title">Khánh Hòa</div> */}
             <div className="navigation ms-5">
               {menuCategory.map((item, index) => (
                 <div
