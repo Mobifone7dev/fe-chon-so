@@ -6,8 +6,8 @@ import FormChooseNumber from "@components/modals/FormChooseNumber";
 import ReactLoading from 'react-loading';
 
 interface NumberRecord {
-  tel_number_key: string;
-  spe_number_type: number;
+  phone: string;
+  type: number;
   change_datetime: string | null;
   loai_ck: string | null;
   is_hold: string | null;
@@ -49,7 +49,7 @@ const NumberTableDLA: React.FC = () => {
 
       // Gửi yêu cầu tới API
       const response = await axios.get(
-        `${API_URL_TABLE}/chon-so/search-condition?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
+        `${API_URL_TABLE}/chon-so/search-condition-dla?search=${searchTermForAPI}&limit=${limit}&page=1&type=${type}&shopCode=${shopCodeForAPI}`
       );
       // console.log("Dữ liệu trả về từ API:", response.data);
       const resultTime = new Date().toLocaleString();
@@ -137,7 +137,7 @@ const NumberTableDLA: React.FC = () => {
     if (isReset) {
       const copyData = [...data]; // Tạo một bản sao của mảng data
       const updatedData = copyData.map((item) => {
-        if (item.tel_number_key == selectedTelNumber) {
+        if (item.phone == selectedTelNumber) {
           return { ...item, is_hold: "1" }; // Cập nhật trường IS_HOLD thành "1"
         }
         return item; // Trả về item không thay đổi
@@ -193,22 +193,14 @@ const NumberTableDLA: React.FC = () => {
           onChange={handleTypeChange} // Gọi hàm handleTypeChange khi thay đổi
         >
           <option value="">Tất cả</option>
-          <option value="1">CK1500 Giá 1,500,000 đ</option>
-          <option value="2">CK1200 Giá 1,200,000 đ</option>
-          <option value="3">CK1000 Giá 1,000,000 đ</option>
-          <option value="4">CK800 Giá 800,000 đ</option>
-          <option value="5">CK500 Giá 500,000 đ</option>
-          <option value="6">CK400 Giá 400,000 đ</option>
-          <option value="7">CK300 Giá 300,000 đ</option>
-          <option value="8">CK250 Giá 250,000 đ</option>
-          <option value="9">CK150 Giá 150,000 đ</option>
-          <option value="10">Tự Do</option>
+          <option value="1">Tự do</option>
+          <option value="2">Cam kết</option>
         </select>
         <button
           className="search-button"
           onClick={handleSearchClick}
           disabled={loading} // Vô hiệu hóa nút khi có cảnh báo
-        
+
         >
           {loading ? "Đang Tìm kiếm ...." : 'Tìm kiếm'}
         </button>{" "}
@@ -233,17 +225,19 @@ const NumberTableDLA: React.FC = () => {
                 <thead>
                   <tr>
                     <th>Số Thuê Bao</th>
-                    <th>Loại Cam Kết</th>
-                    <th>Actions</th>
+                        <th>Loại số</th>
+                        <th>Loại Cam Kết</th>
                   </tr>
                 </thead>
                 <tbody>
                   {data.map((item) => (
-                    <tr key={item.tel_number_key}>
-                      <td>{item.tel_number_key}</td>
-                      <td>KXD {/*item.loai_ck*/}</td>
+                    <tr key={item.phone}>
+                      <td>{item.phone}</td>
                       <td>
                         <div className="actions-container">
+                          {
+                            item.type == 1 ? "Tự do" : "Cam kết"
+                          }
                           { /*
                             item.is_hold === "1" ? (
                               <span style={{ fontWeight: 500, fontStyle: 'italic', color: "red" }}>Số đang giữ</span>
@@ -259,12 +253,14 @@ const NumberTableDLA: React.FC = () => {
                                 null
                               )
                               */
-                              }
+                          }
 
-                            </div>
+                        </div>
                       </td>
-                        </tr>
-                      ))}
+                      <td> {item.loai_ck ?? ""}</td>
+
+                    </tr>
+                  ))}
                     </tbody>
                   </table>
 
