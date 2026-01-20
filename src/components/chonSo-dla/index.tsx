@@ -236,7 +236,7 @@ const NumberTableDLA: React.FC = () => {
                       <td>
                         <div className="actions-container">
                           {
-                            item.type == 1 ? "Tự do" : "Cam kết"
+                            item.type == 1 ? "Tự do" : "Khuyến khích"
                           }
                           { /*
                             item.is_hold === "1" ? (
