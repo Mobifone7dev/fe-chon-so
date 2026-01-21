@@ -5,6 +5,7 @@ const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
 
 export default function DeletePhones() {
   const [phones, setPhones] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleReadExcel = (e) => {
     const file = e.target.files[0];
@@ -44,6 +45,7 @@ export default function DeletePhones() {
   };
 
   const handleDelete = async () => {
+    setLoading(true);
     const res = await fetch(
       `${API_URL_TABLE}/chon-so/delete-phones-index-dla`,
       {
@@ -62,6 +64,7 @@ export default function DeletePhones() {
     } else {
       alert("Lỗi server: " + result.error);
     }
+    setLoading(false);
   };
 
   return (
@@ -74,7 +77,7 @@ export default function DeletePhones() {
         required
       />
       <button className={"btn btn-primary"} onClick={handleDelete}>
-        Xóa trong Elasticsearch
+        {loading ? "Bạn chờ nhé ..." : "  Xóa trong Elasticsearch"}
       </button>
 
       {/* <pre>{JSON.stringify(phones, null, 2).length > 0 ? "Up file thang cong" : "Kiem tra file"}</pre> */}

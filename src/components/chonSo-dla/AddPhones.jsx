@@ -5,6 +5,7 @@ const API_URL_TABLE = process.env.NEXTAUTH_APP_API_URL_SSL;
 
 export default function AddPhones() {
   const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleReadExcel = (e) => {
     const file = e.target.files[0];
@@ -49,6 +50,7 @@ export default function AddPhones() {
   };
 
   const handleAdd = async () => {
+    setLoading(true);
     const res = await fetch(`${API_URL_TABLE}/chon-so/add-phones-index-dla`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -64,6 +66,7 @@ export default function AddPhones() {
     } else {
       alert("Lỗi server: " + result.error);
     }
+    setLoading(false)
   };
 
   return (
@@ -76,7 +79,7 @@ export default function AddPhones() {
         required
       />
       <button className={"btn btn-primary"} onClick={handleAdd}>
-        Thêm vào Elasticsearch
+       {loading ? "Bạn chờ nhé ... ":" Thêm vào Elasticsearch"}
       </button>
 
       {/* <pre>{JSON.stringify(rows, null, 2).length > 0 ? "Up file thang cong" : "Kiem tra file"}</pre> */}
