@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import HeaderApp from "src/components/header/HeaderApp";
+import AutoReloadOnChunkError from "../autoReload/AutoReload"
 import "react-modern-drawer/dist/index.css";
 import MobileMenu from "@components/MobileMenu";
 import dynamic from "next/dynamic";
@@ -19,6 +20,7 @@ const Layout = ({ children }) => {
   };
   return (
     <>
+    <AutoReloadOnChunkError/>
       <HeaderApp toggleMenu={toggleDrawer} isOpen={isOpen} />
       <div className="main-layout">
         <div className="content-page">{children}</div>
