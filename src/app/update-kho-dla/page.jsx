@@ -1,5 +1,7 @@
 import DeletePhones from "../../components/chonSo-dla/DeletePhones";
 import AddPhones from "../../components/chonSo-dla/AddPhones";
+import DeleteAll from "../../components/chonSo-dla/DeleteAll";
+
 function Page(props) {
     
 
@@ -7,6 +9,7 @@ function Page(props) {
         <>
         <AddPhones/>
         <DeletePhones/>
+        <DeleteAll/>
         </>
     );
 }
